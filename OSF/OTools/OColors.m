@@ -1,0 +1,17 @@
+//
+//  OColors.m
+//  OSF
+//
+//  Created by 赵锋 on 15/7/7.
+//  Copyright (c) 2015年 赵锋. All rights reserved.
+//
+
+#import "OColors.h"
+#define RGB(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+@implementation OColors
+
++(UIColor *)OSFNavBarColor
+{
+    return  RGB(68, 98, 88, 1.0);
+}
+@end
