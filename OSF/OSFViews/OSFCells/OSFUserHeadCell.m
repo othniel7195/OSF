@@ -25,7 +25,7 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.backgroundColor=[UIColor blueColor];
+        self.backgroundColor=[UIColor clearColor];
         [self.contentView addSubview:self.userHeadImageView];
         [self.contentView addSubview:self.userNameLabel];
     }
@@ -93,9 +93,9 @@
         
         UILabel *label=[[UILabel alloc] initWithFrame:CGRectZero];
         label.font=[UIFont boldSystemFontOfSize:16.0];
-        label.textColor=[UIColor darkTextColor];
+        label.textColor=[UIColor whiteColor];
         label.textAlignment=NSTextAlignmentCenter;
-        label.backgroundColor=[UIColor redColor];
+        label.backgroundColor=[UIColor clearColor];
         
         _userNameLabel=label;
     }

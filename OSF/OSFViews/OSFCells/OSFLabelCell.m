@@ -8,6 +8,7 @@
 
 #import "OSFLabelCell.h"
 #import "Okeys.h"
+#import "OColors.h"
 @interface OSFLabelCell ()
 
 @property (nonatomic, strong)UIImageView *labelImageView;
@@ -23,7 +24,7 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.backgroundColor=[UIColor brownColor];
+        self.backgroundColor=[OColors OSFLabelCellBackgroundColor];
         [self.contentView addSubview:self.labelImageView];
         [self.contentView addSubview:self.labelL];
         
@@ -121,9 +122,9 @@
     if ([i integerValue]!=self.indexTag) {
         
         //普通状态
-        self.labelImageView.image=self.selectLabelImage;
+        self.labelImageView.image=self.normalLabelImage;
         self.labelL.textColor=[UIColor lightGrayColor];
-        self.backgroundColor=[UIColor brownColor];
+        self.backgroundColor=[OColors OSFLabelCellBackgroundColor];
         
     }else
     {
@@ -131,9 +132,9 @@
         self.labelImageView.image=self.selectLabelImage;
         self.labelL.textColor=[UIColor whiteColor];
         UIView *view=[[UIView alloc] initWithFrame:CGRectZero];
-        view.backgroundColor=[UIColor greenColor];
+        view.backgroundColor=[OColors OSFLabelCellSelectBackgroundColor];
         self.selectedBackgroundView=view;
-        self.backgroundColor=[UIColor greenColor];
+        self.backgroundColor=[OColors OSFLabelCellSelectBackgroundColor];;
     }
 }
 

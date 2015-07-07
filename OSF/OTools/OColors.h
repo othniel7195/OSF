@@ -13,5 +13,6 @@
 @interface OColors : NSObject
 
 +(UIColor *)OSFNavBarColor;
-
++(UIColor *)OSFLabelCellBackgroundColor;
++(UIColor *)OSFLabelCellSelectBackgroundColor;
 @end

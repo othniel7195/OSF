@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor=[UIColor redColor];
+    self.view.backgroundColor=[UIColor whiteColor];
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:self.openDrawerButton];
     

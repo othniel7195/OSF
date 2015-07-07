@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 赵锋. All rights reserved.
 //
 
-#import "OSFBaseViewController.h"
+#import "OSFBaseRightViewController.h"
 
-@interface OSFArticles : OSFBaseViewController
+@interface OSFArticles : OSFBaseRightViewController
 
 @end

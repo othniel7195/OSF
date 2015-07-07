@@ -10,10 +10,19 @@
 #import "OSFBaseRightViewController.h"
 #import "OSFBaseNavigationController.h"
 #import "OSFCellCollection.h"
+#import "OColors.h"
+#import "OSFQuestions.h"
+#import "OSFArticles.h"
+#import "OSFFinds.h"
+#import "OSFSearch.h"
+#import "OSFUser.h"
 typedef NS_ENUM(NSInteger, OSFViewControllerType)
 {
     UserAccount,
-    Questions
+    Questions,
+    Article,
+    Find,
+    Search
 };
 
 @interface OSFLeftViewController ()
@@ -48,11 +57,11 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
     
     self.previousRow=1;
     
-    self.view.backgroundColor=[UIColor lightGrayColor];
+    self.view.backgroundColor=[OColors OSFNavBarColor];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.datas=@[@"头像",@"问题"];
+    self.datas=@[@"头像",@"问题",@"文章",@"发现",@"搜索"];
     
     
     [self initRegisterCell];
@@ -98,6 +107,7 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
+    [OLog showMessage:@"%d_",indexPath.row];
     switch (indexPath.row) {
         case UserAccount:
         {
@@ -106,15 +116,43 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
             
         }
             break;
-        default:
+        case Questions:
         {
-            UIImage *normalImage = [UIImage imageNamed:@"test"];
+            UIImage *normalImage = [UIImage imageNamed:@"icon_tab_wenda"];
+            UIImage *selectImage = [UIImage imageNamed:@"icon_tab_wenda_active"];
             NSString *labelInfo=self.datas[indexPath.row];
-            cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:normalImage labelInfo:labelInfo];
+            cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:selectImage labelInfo:labelInfo];
             if (self.previousRow == indexPath.row) {
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:cellStatus object:@(indexPath.row)];
             }
+        }
+            break;
+        case Article:
+        {
+            UIImage *normalImage = [UIImage imageNamed:@"icon_tab_qa"];
+            UIImage *selectImage = [UIImage imageNamed:@"icon_tab_qa_active"];
+            NSString *labelInfo=self.datas[indexPath.row];
+            cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:selectImage labelInfo:labelInfo];
+          
+        }
+            break;
+        case Find:
+        {
+            UIImage *normalImage = [UIImage imageNamed:@"icon_tab_discover"];
+            UIImage *selectImage = [UIImage imageNamed:@"icon_tab_discover_active"];
+            NSString *labelInfo=self.datas[indexPath.row];
+            cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:selectImage labelInfo:labelInfo];
+           
+        }
+            break;
+        case Search:
+        {
+            UIImage *normalImage = [UIImage imageNamed:@"icon_tab_search"];
+            UIImage *selectImage = [UIImage imageNamed:@"icon_tab_search_active"];
+            NSString *labelInfo=self.datas[indexPath.row];
+            cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:selectImage labelInfo:labelInfo];
+           
         }
             break;
     }
@@ -196,12 +234,32 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
     switch (tag) {
         case UserAccount:
         {
-           
+            OSFUser *user=[[OSFUser alloc] init];
+            base=user;
         }
             break;
         case Questions:
         {
-           
+            OSFQuestions *questions=[[OSFQuestions alloc] init];
+            base=questions;
+        }
+            break;
+        case Article:
+        {
+            OSFArticles *article=[[OSFArticles alloc] init];
+            base=article;
+        }
+            break;
+        case Find:
+        {
+            OSFFinds *find=[[OSFFinds alloc] init];
+            base=find;
+        }
+            break;
+        case Search:
+        {
+            OSFSearch *search=[[OSFSearch alloc] init];
+            base=search;
         }
             break;
     }

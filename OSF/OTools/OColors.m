@@ -14,4 +14,14 @@
 {
     return  RGB(68, 98, 88, 1.0);
 }
+
++(UIColor *)OSFLabelCellBackgroundColor
+{
+    return RGB(68, 128, 78, 0.8);
+}
+
++(UIColor *)OSFLabelCellSelectBackgroundColor
+{
+    return RGB(200, 200, 200, 1.0);
+}
 @end
