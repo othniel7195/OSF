@@ -17,6 +17,7 @@ extern NSString * const user_account;
 #pragma mark --cell 的标识符
 extern NSString *const UserHeadCell;
 extern NSString *const LabelCell;
+extern NSString *const QuestionCell;
 
 
 #pragma mark -- cell 状态

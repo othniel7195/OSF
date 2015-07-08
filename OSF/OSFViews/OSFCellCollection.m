@@ -18,7 +18,10 @@
 {
     [tableView registerClass:[OSFLabelCell class] forCellReuseIdentifier:LabelCell];
 }
-
++(void)registerQuestionCell:(UITableView *)tableView
+{
+    [tableView registerClass:[OSFQuestionCell class] forCellReuseIdentifier:QuestionCell];
+}
 #pragma mark -- 生成并复用cell
 +(UITableViewCell *)cellForUserHead:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath headImage:(UIImage *)headImage userName:(NSString *)userName
 {
@@ -44,6 +47,19 @@
     [cell initConstraints];
     
     return cell;
+}
+
++(UITableViewCell *)cellForQuestion:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath answerNum:(NSString *)answerNum questionStatus:(NSInteger)questionStatus userName:(NSString *)userName date:(NSString *)date content:(NSString *)content
+{
+    OSFQuestionCell *cell=[tableView dequeueReusableCellWithIdentifier:QuestionCell forIndexPath:indexPath];
+    
+    cell.userName=userName;
+    cell.dateTime=date;
+    cell.content=content;
+    [cell numFlagAnswerNum:answerNum questionStatus:questionStatus];
+    
+    return cell;
+    
 }
 
 @end

@@ -43,21 +43,17 @@
 {
     
     [self.labelImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(@10);
-        make.left.mas_equalTo(@80);
+        make.top.mas_equalTo(10);
+        make.left.mas_equalTo(80);
         make.size.mas_equalTo(CGSizeMake(30,30));
     }];
     
     [self.labelL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.labelImageView.mas_centerY);
         make.left.mas_equalTo(self.labelImageView.mas_right).offset(15);
-        make.height.mas_equalTo(@30.0);
-        make.width.mas_greaterThanOrEqualTo(@60.0);
-    }];
-    
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.bottom.mas_equalTo(self.labelImageView.mas_bottom).offset(10);
+        make.height.mas_equalTo(30.0);
+        make.width.mas_greaterThanOrEqualTo(60.0);
+        make.bottom.mas_equalTo(-10).priorityLow();
     }];
     
     CGSize size=[self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];

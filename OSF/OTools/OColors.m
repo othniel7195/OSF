@@ -24,4 +24,28 @@
 {
     return RGB(200, 200, 200, 1.0);
 }
++(UIColor *)OSFQuestionFlagBackgroundColo:(NSInteger) questionType
+{
+    UIColor *color=nil;
+    switch (questionType) {
+        case 0:
+        {
+            color=RGB(240, 65, 85, 1.0);
+        }
+            break;
+            
+        case 1:
+        {
+            color=RGB(18, 139, 78, 1.0);
+        }
+            break;
+        case 2:
+        {
+            color=RGB(128, 128, 128, 1.0);
+        }
+            break;
+    }
+    
+    return color;
+}
 @end

@@ -43,24 +43,20 @@
 -(void)initConstraints
 {
     [self.userHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(@130);
-        make.top.mas_equalTo(@10);
+        make.centerX.mas_equalTo(130);
+        make.top.mas_equalTo(10);
         make.size.mas_equalTo(CGSizeMake(HeadImageWidth, HeadImageWidth));
     }];
     
     [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.width.mas_equalTo(@160);
-        make.height.mas_equalTo(@30);
+        make.width.mas_equalTo(160);
+        make.height.mas_equalTo(30);
         make.centerX.mas_equalTo(self.userHeadImageView.mas_centerX);
         make.top.mas_equalTo(self.userHeadImageView.mas_bottom).offset(5);
-        
+        make.bottom.mas_equalTo(-10).priorityLow();
     }];
     
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.userNameLabel.mas_bottom).offset(10);
-    }];
-
     CGSize  size  =[self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
     self.cellHeight=[NSNumber numberWithFloat:(size.height+1.0)];

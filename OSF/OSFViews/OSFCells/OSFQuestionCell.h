@@ -10,4 +10,16 @@
 
 @interface OSFQuestionCell : OSFBaseCell
 
+///用户姓名
+@property(nonatomic, copy) NSString * userName;
+///发布时间
+@property(nonatomic, copy) NSString * dateTime;
+///发布内容
+@property(nonatomic, copy) NSString *content;
+
+/**
+ * answerNum 回答数
+ * questionStatus 问题状态
+ */
+-(void)numFlagAnswerNum:(NSString *)answerNum questionStatus:(NSInteger) questionStatus;
 @end

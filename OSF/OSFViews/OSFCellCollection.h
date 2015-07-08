@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "OSFUserHeadCell.h"
 #import "OSFLabelCell.h"
+#import "OSFQuestionCell.h"
 #import "Okeys.h"
 @interface OSFCellCollection : NSObject
 
@@ -25,5 +26,17 @@
 +(UITableViewCell *)cellForLabel:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
                      normalImage:(UIImage *)normalImage selectImage:(UIImage *)selectImage
                        labelInfo:(NSString *)labelInfo;
+///注册问题cell
++(void)registerQuestionCell:(UITableView *)tableView;
+
+/**
+ * 生成问题cell 并复用
+ * answerNum  回答人数
+ * questionStatus 问题状态 0 没人回答 1有人回答 2已经解决
+ * userName 用户名
+ * date 发布时间
+ * content 发布内容
+ */
++(UITableViewCell *)cellForQuestion:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath answerNum:(NSString *)answerNum questionStatus:(NSInteger)questionStatus userName:(NSString *)userName date:(NSString *)date content:(NSString *)content;
 
 @end

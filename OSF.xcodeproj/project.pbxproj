@@ -103,6 +103,7 @@
 		D53F48611B4BDFA300520179 /* icon_up_count.png in Resources */ = {isa = PBXBuildFile; fileRef = D53F485F1B4BDFA300520179 /* icon_up_count.png */; };
 		D53F48641B4BE08600520179 /* OSFArticles.m in Sources */ = {isa = PBXBuildFile; fileRef = D53F48631B4BE08600520179 /* OSFArticles.m */; };
 		D53F48671B4BE90100520179 /* OColors.m in Sources */ = {isa = PBXBuildFile; fileRef = D53F48661B4BE90100520179 /* OColors.m */; };
+		D5EDDF921B4D13C0005A072D /* OSFQuestionLatest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,6 +278,8 @@
 		D53F48631B4BE08600520179 /* OSFArticles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFArticles.m; sourceTree = "<group>"; };
 		D53F48651B4BE90100520179 /* OColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OColors.h; sourceTree = "<group>"; };
 		D53F48661B4BE90100520179 /* OColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OColors.m; sourceTree = "<group>"; };
+		D5EDDF901B4D13C0005A072D /* OSFQuestionLatest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFQuestionLatest.h; sourceTree = "<group>"; };
+		D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFQuestionLatest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,12 +425,11 @@
 		D53F475C1B4BCA4300520179 /* OSFViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D5EDDF8F1B4D1379005A072D /* OSFQuestion */,
 				D53F47DC1B4BCB8100520179 /* ICSDrawerController */,
 				D53F475D1B4BCA4300520179 /* OSFBaseViewControlls */,
 				D53F47E91B4BCE1600520179 /* OSFLeftViewController.h */,
 				D53F47EA1B4BCE1600520179 /* OSFLeftViewController.m */,
-				D53F48001B4BD28A00520179 /* OSFQuestions.h */,
-				D53F48011B4BD28A00520179 /* OSFQuestions.m */,
 				D53F48621B4BE08600520179 /* OSFArticles.h */,
 				D53F48631B4BE08600520179 /* OSFArticles.m */,
 				D50D94301B4C27DA00538C3E /* OSFFinds.h */,
@@ -657,6 +659,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D5EDDF8F1B4D1379005A072D /* OSFQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				D53F48001B4BD28A00520179 /* OSFQuestions.h */,
+				D53F48011B4BD28A00520179 /* OSFQuestions.m */,
+				D5EDDF901B4D13C0005A072D /* OSFQuestionLatest.h */,
+				D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */,
+			);
+			name = OSFQuestion;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -801,6 +814,7 @@
 				D53F47C61B4BCAB800520179 /* XPathQuery.m in Sources */,
 				D53F479F1B4BCA9800520179 /* NSArray+MASAdditions.m in Sources */,
 				D53F47381B4BC89800520179 /* OSF.xcdatamodeld in Sources */,
+				D5EDDF921B4D13C0005A072D /* OSFQuestionLatest.m in Sources */,
 				D53F48021B4BD28A00520179 /* OSFQuestions.m in Sources */,
 				D53F47A01B4BCA9800520179 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				D50D94381B4C291900538C3E /* OSFUser.m in Sources */,
