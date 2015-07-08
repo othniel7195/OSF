@@ -32,6 +32,10 @@
     
     self.view.backgroundColor=[UIColor whiteColor];
     
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+         self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:self.openDrawerButton];
     
     if ([self rightHandleButtonHidden]==NO) {

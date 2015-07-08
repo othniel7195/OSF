@@ -48,4 +48,8 @@
     
     return color;
 }
++(UIColor *)OSFRightCellHighlightColor
+{
+    return RGB(68, 98, 88, 0.1);
+}
 @end

@@ -15,5 +15,6 @@
 +(UIColor *)OSFNavBarColor;//导航颜色
 +(UIColor *)OSFLabelCellBackgroundColor;// 左边菜单cell原始颜色
 +(UIColor *)OSFLabelCellSelectBackgroundColor;// 左边菜单cell被点击后的颜色
-+(UIColor *)OSFQuestionFlagBackgroundColo:(NSInteger) questionType;
++(UIColor *)OSFQuestionFlagBackgroundColo:(NSInteger) questionType; //根据问题状态返回颜色
++(UIColor *)OSFRightCellHighlightColor;//右边视图cell点击时候的颜色
 @end

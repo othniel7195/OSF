@@ -10,7 +10,6 @@
 #import "OLog.h"
 #import "OColors.h"
 
-
 @interface OSFNumFlagView ()
 
 @property(nonatomic, assign,readwrite) CGFloat radius;
@@ -74,11 +73,6 @@
     self.backgroundColor=self.flagBackgroundColor;
     
     
-
-}
-
-- (void)drawRect:(CGRect)rect {
-    
     self.layer.masksToBounds=YES;
     self.layer.cornerRadius=self.radius;
     NSString *info =[NSString stringWithFormat:@"%@\n%@",self.answerNum,self.questionStatusInfo];
@@ -93,8 +87,10 @@
     
     
     self.infoLabel.attributedText=attrs;
-    
+
+
 }
+
 #pragma mark ---布局
 -(void)initConstraints
 {

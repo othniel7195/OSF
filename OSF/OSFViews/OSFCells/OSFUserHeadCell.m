@@ -43,7 +43,7 @@
 -(void)initConstraints
 {
     [self.userHeadImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(130);
+        make.left.mas_equalTo(80);
         make.top.mas_equalTo(10);
         make.size.mas_equalTo(CGSizeMake(HeadImageWidth, HeadImageWidth));
     }];

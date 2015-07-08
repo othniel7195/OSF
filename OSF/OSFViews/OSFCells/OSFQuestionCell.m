@@ -8,6 +8,7 @@
 
 #import "OSFQuestionCell.h"
 #import "OSFNumFlagView.h"
+#import "OColors.h"
 @interface OSFQuestionCell ()
 
 @property (nonatomic, strong)UILabel *userNameWithDateLabel;
@@ -25,7 +26,7 @@
     
     if (self) {
         self.backgroundColor=[UIColor clearColor];
-        
+        self.selectionStyle=UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.flagView];
         [self.contentView addSubview:self.userNameWithDateLabel];
         [self.contentView addSubview:self.contentLabel];
@@ -37,8 +38,22 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
+    if (selected) {
+        self.backgroundColor=[OColors  OSFRightCellHighlightColor];
+        self.contentLabel.textColor=[UIColor lightGrayColor];
+    }else{
+        self.backgroundColor=nil;
+    }
 }
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    if (highlighted) {
+        self.backgroundColor=[OColors  OSFRightCellHighlightColor];
+    }
+}
+
 
 #pragma  mark --布局
 -(void)initConstraints
@@ -113,9 +128,8 @@
 {
     if (_flagView==nil) {
         
-        OSFNumFlagView *flagView=[[OSFNumFlagView alloc] initWithFrame:CGRectMake(0, 0, 40, 50) cornerRadius:4.0];
-        
-        _flagView=flagView;
+        OSFNumFlagView *fView=[[OSFNumFlagView alloc] initWithFrame:CGRectZero cornerRadius:4.0];
+        _flagView=fView;
     }
     
     return _flagView;
