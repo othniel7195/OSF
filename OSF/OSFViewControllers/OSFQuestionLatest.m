@@ -8,9 +8,8 @@
 
 #import "OSFQuestionLatest.h"
 #import "OSFCellCollection.h"
+#import <objc/message.h>
 @interface OSFQuestionLatest ()
-
-@property(nonatomic,strong)NSMutableDictionary *cellHeights;
 
 @end
 
@@ -41,27 +40,32 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:@"0" questionStatus:0 userName:@"赵锋" date:@"一天前" content:@"IOS的问题，我不知道如何打开keyboard得开关什么的 导致keyboard打不开，一片底色灰的"];
-    
-    NSNumber *cellHeight=[cell valueForKey:@"cellHeight"];
-    
-    if (self.cellHeights==nil) {
-        self.cellHeights=[NSMutableDictionary dictionary];
-    }
-    NSString *cellHeightKey=[NSString stringWithFormat:@"%ld_%ld",indexPath.section,indexPath.row];
-    [self.cellHeights setObject:cellHeight forKey:cellHeightKey];
+    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:@"0" questionStatus:0 userName:@"赵锋" date:@"一天前" content:@"IOS的问题，天天天天天天天天我不知道如何打开keyboard得开关什么的 导致keyboard打不开，一片底色灰的"];
+  
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellHeightKey=[NSString stringWithFormat:@"%ld_%ld",indexPath.section,indexPath.row];
-    return  [[self.cellHeights objectForKey:cellHeightKey] floatValue];
+    static UITableViewCell *cell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cell = [tableView dequeueReusableCellWithIdentifier:QuestionCell];
+    });
+    
+    CGFloat height=70.0;
+    if([cell respondsToSelector:@selector(calulateHeight:)])
+    {
+        CGFloat (*action)(id, SEL, NSString*) = (CGFloat (*)(id, SEL, NSString*)) objc_msgSend;
+        height =  action(cell, @selector(calulateHeight:), @"IOS的问题，天天天天天天天天我不知道如何打开keyboard得开关什么的 导致keyboard打不开，一片底色灰的");
+      
+    }
+
+    return height;
 }
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 70.0;
 }
-
 
 
 @end

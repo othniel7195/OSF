@@ -10,6 +10,7 @@
 		D50D94321B4C27DA00538C3E /* OSFFinds.m in Sources */ = {isa = PBXBuildFile; fileRef = D50D94311B4C27DA00538C3E /* OSFFinds.m */; };
 		D50D94351B4C281A00538C3E /* OSFSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D50D94341B4C281A00538C3E /* OSFSearch.m */; };
 		D50D94381B4C291900538C3E /* OSFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D50D94371B4C291900538C3E /* OSFUser.m */; };
+		D51541401B4E87EC00255792 /* OSFArticlesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D515413F1B4E87EC00255792 /* OSFArticlesCell.m */; };
 		D53F47321B4BC89800520179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D53F47311B4BC89800520179 /* main.m */; };
 		D53F47351B4BC89800520179 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D53F47341B4BC89800520179 /* AppDelegate.m */; };
 		D53F47381B4BC89800520179 /* OSF.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D53F47361B4BC89800520179 /* OSF.xcdatamodeld */; };
@@ -125,6 +126,8 @@
 		D50D94341B4C281A00538C3E /* OSFSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFSearch.m; sourceTree = "<group>"; };
 		D50D94361B4C291900538C3E /* OSFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFUser.h; sourceTree = "<group>"; };
 		D50D94371B4C291900538C3E /* OSFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUser.m; sourceTree = "<group>"; };
+		D515413E1B4E87EC00255792 /* OSFArticlesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFArticlesCell.h; sourceTree = "<group>"; };
+		D515413F1B4E87EC00255792 /* OSFArticlesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFArticlesCell.m; sourceTree = "<group>"; };
 		D53F472C1B4BC89800520179 /* OSF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53F47301B4BC89800520179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D53F47311B4BC89800520179 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -495,6 +498,8 @@
 				D53F48091B4BD83600520179 /* OSFUserHeadCell.m */,
 				D53F480C1B4BD87400520179 /* OSFQuestionCell.h */,
 				D53F480D1B4BD87400520179 /* OSFQuestionCell.m */,
+				D515413E1B4E87EC00255792 /* OSFArticlesCell.h */,
+				D515413F1B4E87EC00255792 /* OSFArticlesCell.m */,
 			);
 			path = OSFCells;
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 				D53F480B1B4BD83600520179 /* OSFUserHeadCell.m in Sources */,
 				D53F479E1B4BCA9800520179 /* MASViewConstraint.m in Sources */,
 				D53F47FD1B4BD05A00520179 /* OSFCellCollection.m in Sources */,
+				D51541401B4E87EC00255792 /* OSFArticlesCell.m in Sources */,
 				D53F47B51B4BCAA200520179 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D5517DE01B4E169F00704550 /* OSFQuestionHot.m in Sources */,
 				D53F477A1B4BCA8200520179 /* AFSecurityPolicy.m in Sources */,

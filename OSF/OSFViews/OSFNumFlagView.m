@@ -87,8 +87,6 @@
     
     
     self.infoLabel.attributedText=attrs;
-
-
 }
 
 #pragma mark ---布局
@@ -97,8 +95,6 @@
     [self.infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self).insets(UIEdgeInsetsMake(2, 2, 2, 2));
     }];
-    
-    [OLog showMessage:@"num flag :%@",NSStringFromCGRect(self.frame)];
 }
 
 #pragma mark --视图

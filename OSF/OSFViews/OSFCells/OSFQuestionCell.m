@@ -14,12 +14,10 @@
 @property (nonatomic, strong)UILabel *userNameWithDateLabel;
 @property (nonatomic, strong)UILabel *contentLabel;
 @property (nonatomic, strong)OSFNumFlagView *flagView;
-@property (nonatomic, strong ,readwrite) NSNumber *cellHeight;
 
 @end
 
 @implementation OSFQuestionCell
-@synthesize cellHeight=_cellHeight;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
@@ -31,6 +29,7 @@
         [self.contentView addSubview:self.userNameWithDateLabel];
         [self.contentView addSubview:self.contentLabel];
         
+        [self initConstraints];
     }
     
     return self;
@@ -58,7 +57,6 @@
 #pragma  mark --布局
 -(void)initConstraints
 {
-    
     MASAttachKeys(self.flagView, self.userNameWithDateLabel, self.contentLabel, self.contentView);
     
     [self.flagView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,13 +66,12 @@
         
     }];
     
-    
     [self.userNameWithDateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.flagView.mas_right).offset(5.0);
         make.top.mas_equalTo(12);
         make.height.mas_equalTo(20);
-        make.width.mas_equalTo(self.contentView.mas_width).offset(-80);
+        make.right.mas_lessThanOrEqualTo(self.contentView.mas_right).offset(-10);
     }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,19 +79,11 @@
         make.left.mas_equalTo(self.userNameWithDateLabel.mas_left);
         make.top.mas_equalTo(self.userNameWithDateLabel.mas_bottom).offset(2);
         make.height.mas_greaterThanOrEqualTo(21);
-        make.width.mas_equalTo(self.userNameWithDateLabel.mas_width);
-        make.bottom.mas_equalTo(-20).priorityLow();
+        make.right.mas_lessThanOrEqualTo(self.userNameWithDateLabel.mas_right);
+        make.bottom.mas_equalTo(-10);
     }];
     
-    
-    CGSize size=[self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    
-    self.cellHeight=[NSNumber numberWithFloat:(size.height+1)];
-    
-    [OLog showMessage:@"question cell height :%f",size.height];
-    
 }
-
 #pragma mark -- 视图
 -(UILabel *)userNameWithDateLabel
 {
@@ -117,6 +106,8 @@
         label.backgroundColor=[UIColor clearColor];
         label.font=[UIFont boldSystemFontOfSize:14.0];
         label.numberOfLines=0;
+        label.lineBreakMode = NSLineBreakByWordWrapping;
+        [label setTranslatesAutoresizingMaskIntoConstraints:NO];
         _contentLabel=label;
     }
     return _contentLabel;
@@ -138,8 +129,9 @@
 #pragma mark -- 属性赋值
 -(void)numFlagAnswerNum:(NSString *)answerNum questionStatus:(NSInteger)questionStatus
 {
-    [self initConstraints];
+
     [self.flagView numFlagAnswerNum:answerNum questionStatus:questionStatus];
+    
 }
 -(void)setUserName:(NSString *)userName
 {
@@ -164,5 +156,18 @@
         
         self.contentLabel.text=_content;
     }
+}
+
+-(CGFloat)calulateHeight:(NSString *)content
+{
+ 
+    CGSize mainSize = [[UIScreen mainScreen] bounds].size;
+    
+    self.contentLabel.preferredMaxLayoutWidth=mainSize.width-55.0;
+    self.contentLabel.text=content;
+    
+    CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+   
+    return size.height+1.0f;
 }
 @end

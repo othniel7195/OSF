@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 @property(nonatomic, strong) UISegmentedControl *segmentedControl;
 
 @property(nonatomic, strong) UITableViewController *currentViewController;
+
 @end
 
 @implementation OSFQuestions
@@ -42,12 +43,18 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     self.automaticallyAdjustsScrollViewInsets=NO;
     [self.view addSubview:self.segmentedControl];
     [self addChildViewController:self.questionLastest];
+    [self addChildViewController:self.questionHot];
+    [self addChildViewController:self.questionNoAnswer];
     [self.view addSubview:self.questionLastest.view];
     
     self.currentViewController=self.questionLastest;
     
+    self.questionLastest.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
+    self.questionHot.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
+    self.questionNoAnswer.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
     
     [self layoutPageViews];
+    
 }
 
 
@@ -58,6 +65,12 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 }
 
 #pragma mark -- 布局
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    
+}
 -(void)layoutPageViews
 {
     [self.segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,13 +78,8 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
         make.size.mas_equalTo(CGSizeMake(260, 40));
         make.top.mas_equalTo(5);
     }];
-    
-    [self.questionLastest.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.segmentedControl.mas_bottom).offset(10);
-        make.width.mas_equalTo(self.view.mas_width);
-        make.height.mas_equalTo(self.view.mas_height).offset(55);
-    } ];
 }
+
 
 #pragma mark -- 视图
 -(OSFQuestionLatest *)questionLastest
@@ -124,12 +132,13 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     switch (sender.selectedSegmentIndex) {
         case OSFQLastest:
         {
-            
+            [self.questionLastest.view setTranslatesAutoresizingMaskIntoConstraints:NO];
             [self replaceOldController:self.currentViewController toNewController:self.questionLastest];
         }
             break;
         case OSFQHot:
         {
+            [self.questionLastest.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 
             [self replaceOldController:self.currentViewController toNewController:self.questionHot];
         }
@@ -137,6 +146,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
         case OSFQNoAnswer:
         {
 
+            [self.questionNoAnswer.view setTranslatesAutoresizingMaskIntoConstraints:NO];
             [self replaceOldController:self.currentViewController toNewController:self.questionNoAnswer];
         }
             break;
@@ -147,6 +157,24 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 -(void)replaceOldController:(UITableViewController *)oldController  toNewController:(UITableViewController *)newController
 {
     
+    [self addChildViewController:newController];
+    
+    [self transitionFromViewController:oldController toViewController:newController duration:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:^(BOOL finished) {
+        
+        if (finished) {
+            
+            [newController didMoveToParentViewController:self];
+            [oldController willMoveToParentViewController:nil];
+            [oldController removeFromParentViewController];
+            self.currentViewController = newController;
+
+            
+        }else{
+            
+            self.currentViewController = oldController;
+            
+        }
+    }];
 }
 
 #pragma mark -- parent

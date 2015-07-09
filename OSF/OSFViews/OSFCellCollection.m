@@ -57,6 +57,7 @@
     cell.dateTime=date;
     cell.content=content;
     [cell numFlagAnswerNum:answerNum questionStatus:questionStatus];
+
     
     return cell;
     

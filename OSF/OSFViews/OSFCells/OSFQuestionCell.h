@@ -22,4 +22,9 @@
  * questionStatus 问题状态
  */
 -(void)numFlagAnswerNum:(NSString *)answerNum questionStatus:(NSInteger) questionStatus;
+/**
+ *
+ * content 控件高度自动适应内容的 内容
+ */
+-(CGFloat)calulateHeight:(NSString *)content;
 @end
