@@ -52,4 +52,8 @@
 {
     return RGB(68, 98, 88, 0.15);
 }
++(UIColor *)OSFPraiseColor
+{
+    return RGB(3, 154, 97, 1.0);
+}
 @end
