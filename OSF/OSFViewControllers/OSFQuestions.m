@@ -8,12 +8,29 @@
 
 #import "OSFQuestions.h"
 #import "OSFQuestionLatest.h"
+#import "OSFQuestionHot.h"
+#import "OSFQuestionNoAnswer.h"
 #import "Masonry.h"
 #import "OColors.h"
+
+typedef NS_ENUM(NSInteger, ViewControllerType)
+{
+    OSFQLastest, // 最新
+    OSFQHot,    // 热门
+    OSFQNoAnswer //未回答
+};
+
 @interface OSFQuestions ()
 ///问题--最新的
 @property(nonatomic, strong) OSFQuestionLatest *questionLastest;
+///问题--热门的
+@property(nonatomic, strong) OSFQuestionHot *questionHot;
+///问题--未解答的
+@property(nonatomic, strong) OSFQuestionNoAnswer *questionNoAnswer;
+
 @property(nonatomic, strong) UISegmentedControl *segmentedControl;
+
+@property(nonatomic, strong) UITableViewController *currentViewController;
 @end
 
 @implementation OSFQuestions
@@ -26,6 +43,8 @@
     [self.view addSubview:self.segmentedControl];
     [self addChildViewController:self.questionLastest];
     [self.view addSubview:self.questionLastest.view];
+    
+    self.currentViewController=self.questionLastest;
     
     
     [self layoutPageViews];
@@ -66,12 +85,32 @@
     return _questionLastest;
 }
 
+-(OSFQuestionHot *)questionHot
+{
+    if (_questionHot==nil) {
+        OSFQuestionHot *hot=[[OSFQuestionHot alloc] initWithStyle:UITableViewStylePlain];
+        
+        _questionHot=hot;
+    }
+    
+    return _questionHot;
+}
+
+-(OSFQuestionNoAnswer *)questionNoAnswer
+{
+    if (_questionNoAnswer==nil) {
+        OSFQuestionNoAnswer *answer=[[OSFQuestionNoAnswer alloc] initWithStyle:UITableViewStylePlain];
+        _questionNoAnswer=answer;
+    }
+    return _questionNoAnswer;
+}
+
 -(UISegmentedControl *)segmentedControl
 {
     if (_segmentedControl==nil) {
         UISegmentedControl *segmented=[[UISegmentedControl alloc] initWithItems:@[@"最新的",@"热门的",@"未回答"]];
         [segmented addTarget:self action:@selector(segmentedControlChange:) forControlEvents:UIControlEventValueChanged];
-        segmented.selectedSegmentIndex=1;
+        segmented.selectedSegmentIndex=0;
         segmented.tintColor=[OColors OSFNavBarColor];
         
         _segmentedControl=segmented;
@@ -81,6 +120,31 @@
 
 #pragma mark -- 控件 action
 -(void)segmentedControlChange:(UISegmentedControl *)sender
+{
+    switch (sender.selectedSegmentIndex) {
+        case OSFQLastest:
+        {
+            
+            [self replaceOldController:self.currentViewController toNewController:self.questionLastest];
+        }
+            break;
+        case OSFQHot:
+        {
+
+            [self replaceOldController:self.currentViewController toNewController:self.questionHot];
+        }
+            break;
+        case OSFQNoAnswer:
+        {
+
+            [self replaceOldController:self.currentViewController toNewController:self.questionNoAnswer];
+        }
+            break;
+    }
+}
+
+#pragma mark --切换当前显示的controller
+-(void)replaceOldController:(UITableViewController *)oldController  toNewController:(UITableViewController *)newController
 {
     
 }
