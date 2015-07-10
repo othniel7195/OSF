@@ -18,6 +18,7 @@ extern NSString * const user_account;
 extern NSString *const UserHeadCell;
 extern NSString *const LabelCell;
 extern NSString *const QuestionCell;
+extern NSString *const ArticleCell;
 
 
 #pragma mark -- cell 状态

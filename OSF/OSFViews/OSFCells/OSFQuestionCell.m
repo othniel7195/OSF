@@ -91,7 +91,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.textColor=[UIColor lightGrayColor];
         label.backgroundColor=[UIColor clearColor];
-        label.font=[UIFont systemFontOfSize:13.0];
+        label.font=[UIFont systemFontOfSize:12.0];
         
         _userNameWithDateLabel=label;
     }
@@ -158,6 +158,7 @@
     }
 }
 
+#pragma mark --cell 高度
 -(CGFloat)calulateHeight:(NSString *)content
 {
  

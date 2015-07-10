@@ -440,13 +440,12 @@
 		D53F475C1B4BCA4300520179 /* OSFViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D553EC3C1B4FAF60003213EF /* OSFArticle */,
 				D5EDDF8F1B4D1379005A072D /* OSFQuestion */,
 				D53F47DC1B4BCB8100520179 /* ICSDrawerController */,
 				D53F475D1B4BCA4300520179 /* OSFBaseViewControlls */,
 				D53F47E91B4BCE1600520179 /* OSFLeftViewController.h */,
 				D53F47EA1B4BCE1600520179 /* OSFLeftViewController.m */,
-				D53F48621B4BE08600520179 /* OSFArticles.h */,
-				D53F48631B4BE08600520179 /* OSFArticles.m */,
 				D50D94301B4C27DA00538C3E /* OSFFinds.h */,
 				D50D94311B4C27DA00538C3E /* OSFFinds.m */,
 				D50D94331B4C281A00538C3E /* OSFSearch.h */,
@@ -676,6 +675,15 @@
 				D53F48231B4BDC9D00520179 /* ul.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D553EC3C1B4FAF60003213EF /* OSFArticle */ = {
+			isa = PBXGroup;
+			children = (
+				D53F48621B4BE08600520179 /* OSFArticles.h */,
+				D53F48631B4BE08600520179 /* OSFArticles.m */,
+			);
+			name = OSFArticle;
 			sourceTree = "<group>";
 		};
 		D5EDDF8F1B4D1379005A072D /* OSFQuestion */ = {

@@ -22,6 +22,10 @@
 {
     [tableView registerClass:[OSFQuestionCell class] forCellReuseIdentifier:QuestionCell];
 }
++(void)registerArticleCell:(UITableView *)tableView
+{
+    [tableView registerClass:[OSFArticlesCell class] forCellReuseIdentifier:ArticleCell];
+}
 #pragma mark -- 生成并复用cell
 +(UITableViewCell *)cellForUserHead:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath headImage:(UIImage *)headImage userName:(NSString *)userName
 {
@@ -61,6 +65,20 @@
     
     return cell;
     
+}
+
++(UITableViewCell *)cellForArticle:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath articleTitle:(NSString *)articleTitle articleContent:(NSString *)articleContent headImgURL:(NSString *)headImgURL userName:(NSString *)userName publishDate:(NSString *)publishDate praiseNum:(NSString *)praiseNum
+{
+    OSFArticlesCell *cell=[tableView dequeueReusableCellWithIdentifier:ArticleCell forIndexPath:indexPath];
+    
+    cell.praiseNum=praiseNum;
+    cell.imgURL=headImgURL;
+    cell.userName=userName;
+    cell.publishDate=publishDate;
+    cell.articleTitle=articleTitle;
+    cell.articleContent=articleContent;
+    
+    return cell;
 }
 
 @end

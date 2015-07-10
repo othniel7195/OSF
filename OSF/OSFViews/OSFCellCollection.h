@@ -11,6 +11,7 @@
 #import "OSFUserHeadCell.h"
 #import "OSFLabelCell.h"
 #import "OSFQuestionCell.h"
+#import "OSFArticlesCell.h"
 #import "Okeys.h"
 @interface OSFCellCollection : NSObject
 
@@ -37,6 +38,26 @@
  * date 发布时间
  * content 发布内容
  */
-+(UITableViewCell *)cellForQuestion:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath answerNum:(NSString *)answerNum questionStatus:(NSInteger)questionStatus userName:(NSString *)userName date:(NSString *)date content:(NSString *)content;
++(UITableViewCell *)cellForQuestion:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
+                          answerNum:(NSString *)answerNum questionStatus:(NSInteger)questionStatus
+                           userName:(NSString *)userName date:(NSString *)date content:(NSString *)content;
+
+///注册文章cell
++(void)registerArticleCell:(UITableView *)tableView;
+
+/**
+ *  articleTitle 文章标题
+ *  articleContent 文章内容
+ *  headImgURL 头像url
+ *  userName 用户名
+ *  publishDate 发布时间
+ *  praiseNum 赞数
+ */
++(UITableViewCell *)cellForArticle:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
+                      articleTitle:(NSString *)articleTitle articleContent:(NSString *)articleContent
+                        headImgURL:(NSString *)headImgURL userName:(NSString *)userName publishDate:(NSString *)publishDate praiseNum:(NSString *)praiseNum;
+
+
+
 
 @end
