@@ -19,6 +19,7 @@ extern NSString *const UserHeadCell;
 extern NSString *const LabelCell;
 extern NSString *const QuestionCell;
 extern NSString *const ArticleCell;
+extern NSString *const TagCell;
 
 
 #pragma mark -- cell 状态

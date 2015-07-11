@@ -14,7 +14,6 @@
 #import "OSFQuestions.h"
 #import "OSFArticles.h"
 #import "OSFFinds.h"
-#import "OSFSearch.h"
 #import "OSFUser.h"
 typedef NS_ENUM(NSInteger, OSFViewControllerType)
 {
@@ -22,7 +21,6 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
     Questions,
     Article,
     Find,
-    Search
 };
 
 @interface OSFLeftViewController ()
@@ -61,7 +59,7 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.datas=@[@"头像",@"问题",@"文章",@"发现",@"搜索"];
+    self.datas=@[@"头像",@"问题",@"文章",@"发现"];
     
     
     [self initRegisterCell];
@@ -141,15 +139,6 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
         {
             UIImage *normalImage = [UIImage imageNamed:@"icon_tab_discover"];
             UIImage *selectImage = [UIImage imageNamed:@"icon_tab_discover_active"];
-            NSString *labelInfo=self.datas[indexPath.row];
-            cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:selectImage labelInfo:labelInfo];
-           
-        }
-            break;
-        case Search:
-        {
-            UIImage *normalImage = [UIImage imageNamed:@"icon_tab_search"];
-            UIImage *selectImage = [UIImage imageNamed:@"icon_tab_search_active"];
             NSString *labelInfo=self.datas[indexPath.row];
             cell = [OSFCellCollection cellForLabel:tableView indexPath:indexPath normalImage:normalImage selectImage:selectImage labelInfo:labelInfo];
            
@@ -254,12 +243,6 @@ typedef NS_ENUM(NSInteger, OSFViewControllerType)
         {
             OSFFinds *find=[[OSFFinds alloc] init];
             base=find;
-        }
-            break;
-        case Search:
-        {
-            OSFSearch *search=[[OSFSearch alloc] init];
-            base=search;
         }
             break;
     }

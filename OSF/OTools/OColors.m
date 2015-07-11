@@ -56,4 +56,17 @@
 {
     return RGB(3, 154, 97, 1.0);
 }
+
++(UIColor *)OSFRandomColor
+{
+    return RGB([OColors getRandomNumber:10 to:80], [OColors getRandomNumber:100 to:150], [OColors getRandomNumber:180 to:250], 1.0);
+}
++(int)getRandomNumber:(int)from to:(int)to
+
+{
+    
+    return (int)(from + (arc4random() % (to - from + 1)));
+    
+}
+
 @end

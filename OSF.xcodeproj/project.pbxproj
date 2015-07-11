@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D50D94321B4C27DA00538C3E /* OSFFinds.m in Sources */ = {isa = PBXBuildFile; fileRef = D50D94311B4C27DA00538C3E /* OSFFinds.m */; };
-		D50D94351B4C281A00538C3E /* OSFSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D50D94341B4C281A00538C3E /* OSFSearch.m */; };
 		D50D94381B4C291900538C3E /* OSFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D50D94371B4C291900538C3E /* OSFUser.m */; };
 		D51541401B4E87EC00255792 /* OSFArticlesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D515413F1B4E87EC00255792 /* OSFArticlesCell.m */; };
 		D53F47321B4BC89800520179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D53F47311B4BC89800520179 /* main.m */; };
@@ -106,6 +105,12 @@
 		D53F48671B4BE90100520179 /* OColors.m in Sources */ = {isa = PBXBuildFile; fileRef = D53F48661B4BE90100520179 /* OColors.m */; };
 		D5517DE01B4E169F00704550 /* OSFQuestionHot.m in Sources */ = {isa = PBXBuildFile; fileRef = D5517DDF1B4E169F00704550 /* OSFQuestionHot.m */; };
 		D5517DE31B4E184000704550 /* OSFQuestionNoAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = D5517DE21B4E184000704550 /* OSFQuestionNoAnswer.m */; };
+		D5D819371B5153A300FA18F9 /* SKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819321B5153A300FA18F9 /* SKTag.m */; };
+		D5D819381B5153A300FA18F9 /* SKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819341B5153A300FA18F9 /* SKTagButton.m */; };
+		D5D819391B5153A300FA18F9 /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819361B5153A300FA18F9 /* SKTagView.m */; };
+		D5D8193D1B515B3600FA18F9 /* OSFTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D8193C1B515B3600FA18F9 /* OSFTagsCell.m */; };
+		D5D819421B517B6000FA18F9 /* OSFUserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819411B517B6000FA18F9 /* OSFUserLogin.m */; };
+		D5D819451B517C0400FA18F9 /* OSFTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */; };
 		D5DD20BD1B4EB65F007C79E4 /* OSFPraiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */; };
 		D5DD20BF1B4EC3CC007C79E4 /* user_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DD20BE1B4EC3CC007C79E4 /* user_avatar@2x.png */; };
 		D5EDDF921B4D13C0005A072D /* OSFQuestionLatest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */; };
@@ -124,8 +129,6 @@
 /* Begin PBXFileReference section */
 		D50D94301B4C27DA00538C3E /* OSFFinds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFFinds.h; sourceTree = "<group>"; };
 		D50D94311B4C27DA00538C3E /* OSFFinds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFFinds.m; sourceTree = "<group>"; };
-		D50D94331B4C281A00538C3E /* OSFSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFSearch.h; sourceTree = "<group>"; };
-		D50D94341B4C281A00538C3E /* OSFSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFSearch.m; sourceTree = "<group>"; };
 		D50D94361B4C291900538C3E /* OSFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFUser.h; sourceTree = "<group>"; };
 		D50D94371B4C291900538C3E /* OSFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUser.m; sourceTree = "<group>"; };
 		D515413E1B4E87EC00255792 /* OSFArticlesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFArticlesCell.h; sourceTree = "<group>"; };
@@ -289,6 +292,18 @@
 		D5517DDF1B4E169F00704550 /* OSFQuestionHot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFQuestionHot.m; sourceTree = "<group>"; };
 		D5517DE11B4E184000704550 /* OSFQuestionNoAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFQuestionNoAnswer.h; sourceTree = "<group>"; };
 		D5517DE21B4E184000704550 /* OSFQuestionNoAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFQuestionNoAnswer.m; sourceTree = "<group>"; };
+		D5D819311B5153A300FA18F9 /* SKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTag.h; sourceTree = "<group>"; };
+		D5D819321B5153A300FA18F9 /* SKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTag.m; sourceTree = "<group>"; };
+		D5D819331B5153A300FA18F9 /* SKTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagButton.h; sourceTree = "<group>"; };
+		D5D819341B5153A300FA18F9 /* SKTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagButton.m; sourceTree = "<group>"; };
+		D5D819351B5153A300FA18F9 /* SKTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagView.h; sourceTree = "<group>"; };
+		D5D819361B5153A300FA18F9 /* SKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagView.m; sourceTree = "<group>"; };
+		D5D8193B1B515B3600FA18F9 /* OSFTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFTagsCell.h; sourceTree = "<group>"; };
+		D5D8193C1B515B3600FA18F9 /* OSFTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFTagsCell.m; sourceTree = "<group>"; };
+		D5D819401B517B6000FA18F9 /* OSFUserLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFUserLogin.h; sourceTree = "<group>"; };
+		D5D819411B517B6000FA18F9 /* OSFUserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUserLogin.m; sourceTree = "<group>"; };
+		D5D819431B517C0400FA18F9 /* OSFTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFTextFieldCell.h; sourceTree = "<group>"; };
+		D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFTextFieldCell.m; sourceTree = "<group>"; };
 		D5DD20BB1B4EB65F007C79E4 /* OSFPraiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFPraiseView.h; sourceTree = "<group>"; };
 		D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFPraiseView.m; sourceTree = "<group>"; };
 		D5DD20BE1B4EC3CC007C79E4 /* user_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_avatar@2x.png"; sourceTree = "<group>"; };
@@ -429,6 +444,7 @@
 		D53F475B1B4BCA4300520179 /* OSFVender(第三方框架) */ = {
 			isa = PBXGroup;
 			children = (
+				D5D819301B5153A300FA18F9 /* SKTagView */,
 				D53F47BD1B4BCAB800520179 /* Hpple */,
 				D53F47A31B4BCAA200520179 /* UIKit+AFNetworking */,
 				D53F477F1B4BCA9800520179 /* Masonry */,
@@ -440,18 +456,14 @@
 		D53F475C1B4BCA4300520179 /* OSFViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D5D8193F1B517B2300FA18F9 /* OSFUser */,
+				D5D8193A1B51553F00FA18F9 /* OSFFind */,
 				D553EC3C1B4FAF60003213EF /* OSFArticle */,
 				D5EDDF8F1B4D1379005A072D /* OSFQuestion */,
 				D53F47DC1B4BCB8100520179 /* ICSDrawerController */,
 				D53F475D1B4BCA4300520179 /* OSFBaseViewControlls */,
 				D53F47E91B4BCE1600520179 /* OSFLeftViewController.h */,
 				D53F47EA1B4BCE1600520179 /* OSFLeftViewController.m */,
-				D50D94301B4C27DA00538C3E /* OSFFinds.h */,
-				D50D94311B4C27DA00538C3E /* OSFFinds.m */,
-				D50D94331B4C281A00538C3E /* OSFSearch.h */,
-				D50D94341B4C281A00538C3E /* OSFSearch.m */,
-				D50D94361B4C291900538C3E /* OSFUser.h */,
-				D50D94371B4C291900538C3E /* OSFUser.m */,
 			);
 			path = OSFViewControllers;
 			sourceTree = "<group>";
@@ -507,6 +519,10 @@
 				D53F480D1B4BD87400520179 /* OSFQuestionCell.m */,
 				D515413E1B4E87EC00255792 /* OSFArticlesCell.h */,
 				D515413F1B4E87EC00255792 /* OSFArticlesCell.m */,
+				D5D8193B1B515B3600FA18F9 /* OSFTagsCell.h */,
+				D5D8193C1B515B3600FA18F9 /* OSFTagsCell.m */,
+				D5D819431B517C0400FA18F9 /* OSFTextFieldCell.h */,
+				D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */,
 			);
 			path = OSFCells;
 			sourceTree = "<group>";
@@ -686,6 +702,39 @@
 			name = OSFArticle;
 			sourceTree = "<group>";
 		};
+		D5D819301B5153A300FA18F9 /* SKTagView */ = {
+			isa = PBXGroup;
+			children = (
+				D5D819311B5153A300FA18F9 /* SKTag.h */,
+				D5D819321B5153A300FA18F9 /* SKTag.m */,
+				D5D819331B5153A300FA18F9 /* SKTagButton.h */,
+				D5D819341B5153A300FA18F9 /* SKTagButton.m */,
+				D5D819351B5153A300FA18F9 /* SKTagView.h */,
+				D5D819361B5153A300FA18F9 /* SKTagView.m */,
+			);
+			path = SKTagView;
+			sourceTree = "<group>";
+		};
+		D5D8193A1B51553F00FA18F9 /* OSFFind */ = {
+			isa = PBXGroup;
+			children = (
+				D50D94301B4C27DA00538C3E /* OSFFinds.h */,
+				D50D94311B4C27DA00538C3E /* OSFFinds.m */,
+			);
+			name = OSFFind;
+			sourceTree = "<group>";
+		};
+		D5D8193F1B517B2300FA18F9 /* OSFUser */ = {
+			isa = PBXGroup;
+			children = (
+				D50D94361B4C291900538C3E /* OSFUser.h */,
+				D50D94371B4C291900538C3E /* OSFUser.m */,
+				D5D819401B517B6000FA18F9 /* OSFUserLogin.h */,
+				D5D819411B517B6000FA18F9 /* OSFUserLogin.m */,
+			);
+			name = OSFUser;
+			sourceTree = "<group>";
+		};
 		D5EDDF8F1B4D1379005A072D /* OSFQuestion */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,7 +890,6 @@
 				D53F47BA1B4BCAA200520179 /* UIProgressView+AFNetworking.m in Sources */,
 				D53F47BB1B4BCAA200520179 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D53F47BC1B4BCAA200520179 /* UIWebView+AFNetworking.m in Sources */,
-				D50D94351B4C281A00538C3E /* OSFSearch.m in Sources */,
 				D53F47761B4BCA8200520179 /* AFHTTPRequestOperation.m in Sources */,
 				D53F47C61B4BCAB800520179 /* XPathQuery.m in Sources */,
 				D53F479F1B4BCA9800520179 /* NSArray+MASAdditions.m in Sources */,
@@ -861,14 +909,18 @@
 				D53F479D1B4BCA9800520179 /* MASViewAttribute.m in Sources */,
 				D53F479C1B4BCA9800520179 /* MASLayoutConstraint.m in Sources */,
 				D53F47E21B4BCBD000520179 /* OSFBaseViewController.m in Sources */,
+				D5D819421B517B6000FA18F9 /* OSFUserLogin.m in Sources */,
 				D53F47DB1B4BCB6F00520179 /* OLog.m in Sources */,
 				D53F47C41B4BCAB800520179 /* TFHpple.m in Sources */,
+				D5D819371B5153A300FA18F9 /* SKTag.m in Sources */,
+				D5D819381B5153A300FA18F9 /* SKTagButton.m in Sources */,
 				D53F47991B4BCA9800520179 /* MASCompositeConstraint.m in Sources */,
 				D53F477D1B4BCA8200520179 /* AFURLResponseSerialization.m in Sources */,
 				D53F477B1B4BCA8200520179 /* AFURLConnectionOperation.m in Sources */,
 				D53F480B1B4BD83600520179 /* OSFUserHeadCell.m in Sources */,
 				D53F479E1B4BCA9800520179 /* MASViewConstraint.m in Sources */,
 				D53F47FD1B4BD05A00520179 /* OSFCellCollection.m in Sources */,
+				D5D819451B517C0400FA18F9 /* OSFTextFieldCell.m in Sources */,
 				D51541401B4E87EC00255792 /* OSFArticlesCell.m in Sources */,
 				D53F47B51B4BCAA200520179 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D5517DE01B4E169F00704550 /* OSFQuestionHot.m in Sources */,
@@ -894,6 +946,8 @@
 				D53F480E1B4BD87400520179 /* OSFQuestionCell.m in Sources */,
 				D53F47B81B4BCAA200520179 /* UIButton+AFNetworking.m in Sources */,
 				D53F47A11B4BCA9800520179 /* View+MASAdditions.m in Sources */,
+				D5D8193D1B515B3600FA18F9 /* OSFTagsCell.m in Sources */,
+				D5D819391B5153A300FA18F9 /* SKTagView.m in Sources */,
 				D53F47E81B4BCD5200520179 /* OSFBaseRightViewController.m in Sources */,
 				D53F48671B4BE90100520179 /* OColors.m in Sources */,
 				D53F48251B4BDC9D00520179 /* MXToolbarButton.m in Sources */,

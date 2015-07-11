@@ -26,6 +26,10 @@
 {
     [tableView registerClass:[OSFArticlesCell class] forCellReuseIdentifier:ArticleCell];
 }
++(void)registerTagsCell:(UITableView *)tableView
+{
+    [tableView registerClass:[OSFTagsCell class] forCellReuseIdentifier:TagCell];
+}
 #pragma mark -- 生成并复用cell
 +(UITableViewCell *)cellForUserHead:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath headImage:(UIImage *)headImage userName:(NSString *)userName
 {
@@ -77,6 +81,17 @@
     cell.publishDate=publishDate;
     cell.articleTitle=articleTitle;
     cell.articleContent=articleContent;
+    
+    return cell;
+}
+
++(UITableViewCell *)cellForTags:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath delegate:(id)delegate
+                           tags:(NSArray *)tags
+{
+    OSFTagsCell *cell =[tableView dequeueReusableCellWithIdentifier:TagCell forIndexPath:indexPath];
+    cell.delegate=delegate;
+    cell.tags=tags;
+    cell.path=indexPath;
     
     return cell;
 }

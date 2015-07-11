@@ -12,6 +12,7 @@
 #import "OSFLabelCell.h"
 #import "OSFQuestionCell.h"
 #import "OSFArticlesCell.h"
+#import "OSFTagsCell.h"
 #import "Okeys.h"
 @interface OSFCellCollection : NSObject
 
@@ -57,7 +58,11 @@
                       articleTitle:(NSString *)articleTitle articleContent:(NSString *)articleContent
                         headImgURL:(NSString *)headImgURL userName:(NSString *)userName publishDate:(NSString *)publishDate praiseNum:(NSString *)praiseNum;
 
-
-
+///注册tags cell
++(void)registerTagsCell:(UITableView *)tableView;
+/**
+ * tags 标签数组
+ */
++(UITableViewCell *)cellForTags:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath delegate:(id) delegate tags:(NSArray *)tags;
 
 @end
