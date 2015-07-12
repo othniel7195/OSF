@@ -25,6 +25,7 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        self.selectionStyle=UITableViewCellSelectionStyleNone;
         self.backgroundColor=[UIColor clearColor];
         [self.contentView addSubview:self.userHeadImageView];
         [self.contentView addSubview:self.userNameLabel];

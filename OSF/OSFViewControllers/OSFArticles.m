@@ -64,7 +64,10 @@
 {
     return  NO;
 }
-
+-(NSString *)searchbarPlaceholder
+{
+    return @"查询文章";
+}
 #pragma mark -- table datasouce
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     

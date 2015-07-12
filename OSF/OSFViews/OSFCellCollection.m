@@ -30,6 +30,10 @@
 {
     [tableView registerClass:[OSFTagsCell class] forCellReuseIdentifier:TagCell];
 }
++(void)registerTextFieldCell:(UITableView *)tableView
+{
+    [tableView registerClass:[OSFTextFieldCell class] forCellReuseIdentifier:TextFieldCell];
+}
 #pragma mark -- 生成并复用cell
 +(UITableViewCell *)cellForUserHead:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath headImage:(UIImage *)headImage userName:(NSString *)userName
 {
@@ -95,5 +99,14 @@
     
     return cell;
 }
-
++(UITableViewCell *)cellForTextField:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath delegate:(id)delegate placeholder:(NSString *)placeholder textFieldType:(NSInteger)textFieldType returnType:(NSInteger)returnType
+{
+    OSFTextFieldCell *cell=[tableView dequeueReusableCellWithIdentifier:TextFieldCell forIndexPath:indexPath];
+    cell.delegate=delegate;
+    cell.placeholder=placeholder;
+    cell.textFieldType=textFieldType;
+    cell.returnType=returnType;
+    
+    return cell;
+}
 @end

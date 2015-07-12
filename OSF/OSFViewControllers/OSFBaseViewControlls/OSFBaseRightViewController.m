@@ -7,11 +7,15 @@
 //
 
 #import "OSFBaseRightViewController.h"
+#import "OSFSearchBarView.h"
+#import "UIImage+ImageWithColor.h"
 #import "Okeys.h"
 @interface OSFBaseRightViewController ()
 
 @property(nonatomic, strong) UIButton *openDrawerButton;
 @property(nonatomic, strong) UIButton *rightHandleButton;//右边操作的按钮
+@property(nonatomic, strong) OSFSearchBarView *searchBarView;
+@property(nonatomic, assign) BOOL rightTopSelect;//右上按钮点击了吗
 
 @end
 
@@ -29,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.automaticallyAdjustsScrollViewInsets=NO;
     self.view.backgroundColor=[UIColor whiteColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
@@ -41,10 +45,16 @@
     if ([self rightHandleButtonHidden]==NO) {
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:self.rightHandleButton];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
 }
 
@@ -87,6 +97,23 @@
     return NO;
 }
 
+-(OSFSearchBarView *)searchBarView
+{
+    if (!_searchBarView) {
+        OSFSearchBarView *searchbar=[[OSFSearchBarView alloc] initWithFrame:CGRectMake(0, -self.view.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height)];
+        searchbar.placeholder=[self searchbarPlaceholder];
+        
+        _searchBarView=searchbar;
+    }
+    
+    return _searchBarView;
+}
+
+-(NSString *)searchbarPlaceholder
+{
+    return @"";
+}
+
 #pragma mark ---基本视图的操作
 -(void)openDrawer:(UIButton *)button
 {
@@ -98,6 +125,39 @@
 -(void)rightHandle:(UIButton *)button
 {
     [OLog showMessage:@"右顶上的按钮触发了"];
+    
+    self.rightTopSelect=!self.rightTopSelect;
+    if (self.rightTopSelect) {
+        
+        [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionTransitionFlipFromTop animations:^{
+            
+            [self.view addSubview:self.searchBarView];
+            
+            self.searchBarView.placeholder=[self searchbarPlaceholder];
+            
+            CGRect frame = self.searchBarView.frame;
+            frame.origin.y = 0;
+            self.searchBarView.frame=frame;
+            
+        } completion:^(BOOL finished) {
+          
+        }];
+        
+        
+    }else{
+        [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            CGRect frame = self.searchBarView.frame;
+            frame.origin.y = -self.view.bounds.size.height;
+            self.searchBarView.frame=frame;
+            
+        } completion:^(BOOL finished) {
+            [self.searchBarView removeFromSuperview];
+        }];
+        
+    }
+    
+    
 }
 - (BOOL)prefersStatusBarHidden
 {

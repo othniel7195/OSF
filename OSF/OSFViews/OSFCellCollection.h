@@ -13,6 +13,7 @@
 #import "OSFQuestionCell.h"
 #import "OSFArticlesCell.h"
 #import "OSFTagsCell.h"
+#import "OSFTextFieldCell.h"
 #import "Okeys.h"
 @interface OSFCellCollection : NSObject
 
@@ -64,5 +65,17 @@
  * tags 标签数组
  */
 +(UITableViewCell *)cellForTags:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath delegate:(id) delegate tags:(NSArray *)tags;
+
+///注册 textfield cell
++(void)registerTextFieldCell:(UITableView *)tableView;
+/**
+ *
+ * textFieldType  1 普通  2密码
+ * returnType    1 done 2next
+ *
+ */
++(UITableViewCell *)cellForTextField:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath delegate:(id) delegate placeholder:(NSString *)placeholder  textFieldType:(NSInteger) textFieldType returnType:(NSInteger)returnType;
+
+
 
 @end

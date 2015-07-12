@@ -32,6 +32,8 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 
 @property(nonatomic, strong) UITableViewController *currentViewController;
 
+@property(nonatomic, copy) NSString *questionType;
+
 @end
 
 @implementation OSFQuestions
@@ -40,6 +42,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     [super viewDidLoad];
     
     self.title=@"问题";
+    self.questionType=@"查询最新问题";
     self.automaticallyAdjustsScrollViewInsets=NO;
     [self.view addSubview:self.segmentedControl];
     [self addChildViewController:self.questionLastest];
@@ -132,12 +135,14 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     switch (sender.selectedSegmentIndex) {
         case OSFQLastest:
         {
+            self.questionType=@"查询最新问题";
             [self.questionLastest.view setTranslatesAutoresizingMaskIntoConstraints:NO];
             [self replaceOldController:self.currentViewController toNewController:self.questionLastest];
         }
             break;
         case OSFQHot:
         {
+            self.questionType=@"查询热门问题";
             [self.questionLastest.view setTranslatesAutoresizingMaskIntoConstraints:NO];
 
             [self replaceOldController:self.currentViewController toNewController:self.questionHot];
@@ -145,6 +150,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
             break;
         case OSFQNoAnswer:
         {
+            self.questionType=@"查询未回答问题";
 
             [self.questionNoAnswer.view setTranslatesAutoresizingMaskIntoConstraints:NO];
             [self replaceOldController:self.currentViewController toNewController:self.questionNoAnswer];
@@ -185,6 +191,10 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 -(BOOL)rightHandleButtonHidden
 {
     return  NO;
+}
+-(NSString *)searchbarPlaceholder
+{
+    return self.questionType;
 }
 
 @end

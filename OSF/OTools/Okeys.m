@@ -16,6 +16,7 @@ NSString * const LabelCell = @"labelCell";
 NSString * const QuestionCell = @"questionCell";
 NSString * const ArticleCell = @"articleCell";
 NSString * const TagCell =@"tagCell";
+NSString * const TextFieldCell=@"textFieldCell";
 
 NSString * const cellStatus=@"cellStatus";
 

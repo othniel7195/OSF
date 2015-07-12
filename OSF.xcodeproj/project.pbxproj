@@ -111,6 +111,9 @@
 		D5D8193D1B515B3600FA18F9 /* OSFTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D8193C1B515B3600FA18F9 /* OSFTagsCell.m */; };
 		D5D819421B517B6000FA18F9 /* OSFUserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819411B517B6000FA18F9 /* OSFUserLogin.m */; };
 		D5D819451B517C0400FA18F9 /* OSFTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */; };
+		D5DCF4E31B5298A000FAE731 /* OSFUserLoginSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E21B5298A000FAE731 /* OSFUserLoginSuccess.m */; };
+		D5DCF4E61B52A2B600FAE731 /* OSFSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E51B52A2B600FAE731 /* OSFSearchBarView.m */; };
+		D5DCF4E91B52B10100FAE731 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E81B52B10100FAE731 /* UIImage+ImageWithColor.m */; };
 		D5DD20BD1B4EB65F007C79E4 /* OSFPraiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */; };
 		D5DD20BF1B4EC3CC007C79E4 /* user_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DD20BE1B4EC3CC007C79E4 /* user_avatar@2x.png */; };
 		D5EDDF921B4D13C0005A072D /* OSFQuestionLatest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */; };
@@ -304,6 +307,13 @@
 		D5D819411B517B6000FA18F9 /* OSFUserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUserLogin.m; sourceTree = "<group>"; };
 		D5D819431B517C0400FA18F9 /* OSFTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFTextFieldCell.h; sourceTree = "<group>"; };
 		D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFTextFieldCell.m; sourceTree = "<group>"; };
+		D5DCF4E01B526D2700FAE731 /* OSFTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFTextFieldDelegate.h; sourceTree = "<group>"; };
+		D5DCF4E11B5298A000FAE731 /* OSFUserLoginSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFUserLoginSuccess.h; sourceTree = "<group>"; };
+		D5DCF4E21B5298A000FAE731 /* OSFUserLoginSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUserLoginSuccess.m; sourceTree = "<group>"; };
+		D5DCF4E41B52A2B600FAE731 /* OSFSearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFSearchBarView.h; sourceTree = "<group>"; };
+		D5DCF4E51B52A2B600FAE731 /* OSFSearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFSearchBarView.m; sourceTree = "<group>"; };
+		D5DCF4E71B52B10100FAE731 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
+		D5DCF4E81B52B10100FAE731 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
 		D5DD20BB1B4EB65F007C79E4 /* OSFPraiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFPraiseView.h; sourceTree = "<group>"; };
 		D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFPraiseView.m; sourceTree = "<group>"; };
 		D5DD20BE1B4EC3CC007C79E4 /* user_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_avatar@2x.png"; sourceTree = "<group>"; };
@@ -490,6 +500,8 @@
 				D53F48101B4BD8BF00520179 /* OSFNumFlagView.m */,
 				D5DD20BB1B4EB65F007C79E4 /* OSFPraiseView.h */,
 				D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */,
+				D5DCF4E41B52A2B600FAE731 /* OSFSearchBarView.h */,
+				D5DCF4E51B52A2B600FAE731 /* OSFSearchBarView.m */,
 				D53F47D21B4BCB5A00520179 /* ICSDropShadowView */,
 				D53F475F1B4BCA4300520179 /* OSFBaseViewsWithCells */,
 				D53F47601B4BCA4300520179 /* OSFCells */,
@@ -530,6 +542,7 @@
 		D53F47611B4BCA4300520179 /* OTools */ = {
 			isa = PBXGroup;
 			children = (
+				D5DCF4DE1B526B3A00FAE731 /* ODelegate */,
 				D53F48121B4BDC9D00520179 /* MXMarkdownKeyboard */,
 				D53F47D61B4BCB6F00520179 /* Okeys.h */,
 				D53F47D71B4BCB6F00520179 /* Okeys.m */,
@@ -537,6 +550,8 @@
 				D53F47D91B4BCB6F00520179 /* OLog.m */,
 				D53F48651B4BE90100520179 /* OColors.h */,
 				D53F48661B4BE90100520179 /* OColors.m */,
+				D5DCF4E71B52B10100FAE731 /* UIImage+ImageWithColor.h */,
+				D5DCF4E81B52B10100FAE731 /* UIImage+ImageWithColor.m */,
 			);
 			path = OTools;
 			sourceTree = "<group>";
@@ -731,8 +746,18 @@
 				D50D94371B4C291900538C3E /* OSFUser.m */,
 				D5D819401B517B6000FA18F9 /* OSFUserLogin.h */,
 				D5D819411B517B6000FA18F9 /* OSFUserLogin.m */,
+				D5DCF4E11B5298A000FAE731 /* OSFUserLoginSuccess.h */,
+				D5DCF4E21B5298A000FAE731 /* OSFUserLoginSuccess.m */,
 			);
 			name = OSFUser;
+			sourceTree = "<group>";
+		};
+		D5DCF4DE1B526B3A00FAE731 /* ODelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D5DCF4E01B526D2700FAE731 /* OSFTextFieldDelegate.h */,
+			);
+			name = ODelegate;
 			sourceTree = "<group>";
 		};
 		D5EDDF8F1B4D1379005A072D /* OSFQuestion */ = {
@@ -886,6 +911,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DCF4E31B5298A000FAE731 /* OSFUserLoginSuccess.m in Sources */,
 				D53F47EB1B4BCE1600520179 /* OSFLeftViewController.m in Sources */,
 				D53F47BA1B4BCAA200520179 /* UIProgressView+AFNetworking.m in Sources */,
 				D53F47BB1B4BCAA200520179 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -925,9 +951,11 @@
 				D53F47B51B4BCAA200520179 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D5517DE01B4E169F00704550 /* OSFQuestionHot.m in Sources */,
 				D53F477A1B4BCA8200520179 /* AFSecurityPolicy.m in Sources */,
+				D5DCF4E91B52B10100FAE731 /* UIImage+ImageWithColor.m in Sources */,
 				D53F47F01B4BCFB000520179 /* OSFBaseCell.m in Sources */,
 				D53F47781B4BCA8200520179 /* AFHTTPSessionManager.m in Sources */,
 				D53F47DF1B4BCB8100520179 /* ICSDrawerController.m in Sources */,
+				D5DCF4E61B52A2B600FAE731 /* OSFSearchBarView.m in Sources */,
 				D53F47B91B4BCAA200520179 /* UIImageView+AFNetworking.m in Sources */,
 				D53F477C1B4BCA8200520179 /* AFURLRequestSerialization.m in Sources */,
 				D53F48111B4BD8BF00520179 /* OSFNumFlagView.m in Sources */,
