@@ -100,7 +100,7 @@
 -(OSFSearchBarView *)searchBarView
 {
     if (!_searchBarView) {
-        OSFSearchBarView *searchbar=[[OSFSearchBarView alloc] initWithFrame:CGRectMake(0, -self.view.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height)];
+        OSFSearchBarView *searchbar=[[OSFSearchBarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         searchbar.placeholder=[self searchbarPlaceholder];
         
         _searchBarView=searchbar;
@@ -129,31 +129,19 @@
     self.rightTopSelect=!self.rightTopSelect;
     if (self.rightTopSelect) {
         
-        [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionTransitionFlipFromTop animations:^{
-            
-            [self.view addSubview:self.searchBarView];
-            
-            self.searchBarView.placeholder=[self searchbarPlaceholder];
-            
-            CGRect frame = self.searchBarView.frame;
-            frame.origin.y = 0;
-            self.searchBarView.frame=frame;
-            
+        
+        [self.view addSubview:self.searchBarView];
+        self.searchBarView.placeholder=[self searchbarPlaceholder];
+        self.searchBarView.topConstraint.mas_equalTo(0);
+        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.searchBarView layoutIfNeeded];
         } completion:^(BOOL finished) {
-          
+            
         }];
-        
-        
     }else{
-        [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-            CGRect frame = self.searchBarView.frame;
-            frame.origin.y = -self.view.bounds.size.height;
-            self.searchBarView.frame=frame;
-            
-        } completion:^(BOOL finished) {
-            [self.searchBarView removeFromSuperview];
-        }];
+        self.searchBarView.topConstraint.mas_equalTo(-40);
+        [self.searchBarView layoutIfNeeded];
+        [self.searchBarView removeFromSuperview];
         
     }
     

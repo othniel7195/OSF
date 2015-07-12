@@ -9,6 +9,7 @@
 #import "OSFSearchBarView.h"
 #import "OColors.h"
 #import "UIImage+ImageWithColor.h"
+#import "OLog.h"
 @interface OSFSearchBarView ()<UISearchBarDelegate>
 
 @property(nonatomic, strong)UISearchBar *searchBar;
@@ -22,22 +23,31 @@
     self=[super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor=[UIColor colorWithWhite:0.8 alpha:0.7];
+        self.backgroundColor=[UIColor colorWithWhite:0.3 alpha:0.7];
         
         [self addSubview:self.searchBar];
-        
         [self initConstraints];
+        
+        [OLog showMessage:@"-----search bar"];
     }
     return self;
 }
 
-
+- (void)didMoveToWindow {
+    
+    [super didMoveToWindow];
+}
+-(void)didMoveToSuperview
+{
+    
+}
 #pragma mark -- 布局
 -(void)initConstraints
 {
+    CGSize size=[UIScreen mainScreen].bounds.size;
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(self.bounds.size.width, 40));
-        make.top.mas_equalTo(0);
+        make.size.mas_equalTo(CGSizeMake(size.width, 40));
+        self.topConstraint= make.top.mas_equalTo(-40);
     }];
 }
 
@@ -46,7 +56,9 @@
 -(UISearchBar *)searchBar
 {
     if (!_searchBar) {
+        CGSize size=[UIScreen mainScreen].bounds.size;
         UISearchBar *search=[[UISearchBar alloc] initWithFrame:CGRectZero];
+        search.frame=CGRectMake(0, -40, size.width, 40);
         search.delegate=self;
         search.searchBarStyle=UISearchBarStyleDefault;
         [search setBackgroundImage:[self searchBackgroundImage] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
@@ -76,5 +88,6 @@
 {
     
 }
+
 
 @end
