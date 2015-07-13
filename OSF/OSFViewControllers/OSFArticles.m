@@ -9,8 +9,10 @@
 #import "OSFArticles.h"
 #import "OSFCellCollection.h"
 #import <objc/message.h>
-@interface OSFArticles ()<UITableViewDataSource,UITableViewDelegate>
+#import "OTableViewRefresh.h"
+@interface OSFArticles ()<UITableViewDataSource,UITableViewDelegate,OTableViewRefreshDelegate>
 @property(nonatomic, strong)UITableView *articlesList;
+@property(nonatomic, strong)OTableViewRefresh *orefreshControl;
 @end
 
 @implementation OSFArticles
@@ -27,12 +29,46 @@
     
     [self layoutPageViews];
     
+    [self.orefreshControl o_tableViewHeadRefresh:self.articlesList];
+    [self.orefreshControl o_tableViewFootRefresh:self.articlesList];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+
+#pragma mark --refresh table
+-(OTableViewRefresh *)orefreshControl
+{
+    if (!_orefreshControl) {
+        OTableViewRefresh *refresh=[[OTableViewRefresh alloc] init];
+        refresh.delegate=self;
+        _orefreshControl=refresh;
+    }
+    return _orefreshControl;
+}
+
+-(void)o_loadNewData
+{
+    __weak OSFArticles * WEAKSELF = self;
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+        [WEAKSELF.orefreshControl o_endHeadRefresh:WEAKSELF.articlesList];
+    });
+}
+-(void)o_loadMoreData
+{
+    __weak OSFArticles * WEAKSELF = self;
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+        [WEAKSELF.orefreshControl o_endFootRefresh:WEAKSELF.articlesList];
+    });
+}
+
 
 #pragma mark -- 布局
 -(void)layoutPageViews

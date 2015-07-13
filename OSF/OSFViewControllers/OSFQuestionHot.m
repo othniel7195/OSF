@@ -9,15 +9,21 @@
 #import "OSFQuestionHot.h"
 #import "OSFCellCollection.h"
 #import <objc/message.h>
-@interface OSFQuestionHot ()
-
+#import "OTableViewRefresh.h"
+@interface OSFQuestionHot ()<OTableViewRefreshDelegate>
+///自己得刷新类
+@property(nonatomic, strong) OTableViewRefresh *orefreshControl;
 @end
 
 @implementation OSFQuestionHot
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [OSFCellCollection registerQuestionCell:self.tableView];
+    [self.orefreshControl o_tableViewHeadRefresh:self.tableView];
+    [self.orefreshControl o_tableViewFootRefresh:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,7 +31,37 @@
     
 }
 
+#pragma mark --refresh table
+-(OTableViewRefresh *)orefreshControl
+{
+    if (!_orefreshControl) {
+        OTableViewRefresh *refresh=[[OTableViewRefresh alloc] init];
+        refresh.delegate=self;
+        _orefreshControl=refresh;
+    }
+    return _orefreshControl;
+}
 
+-(void)o_loadNewData
+{
+    __weak OSFQuestionHot * WEAKSELF = self;
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+        [WEAKSELF.orefreshControl o_endHeadRefresh:WEAKSELF.tableView];
+    });
+}
+-(void)o_loadMoreData
+{
+    __weak OSFQuestionHot * WEAKSELF = self;
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+        [WEAKSELF.orefreshControl o_endFootRefresh:WEAKSELF.tableView];
+    });
+}
+
+#pragma mark -- table delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 

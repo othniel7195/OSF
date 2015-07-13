@@ -10,5 +10,4 @@
 #import <UIKit/UIKit.h>
 
 @interface OSFQuestionLatest : UITableViewController
-
 @end

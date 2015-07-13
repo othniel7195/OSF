@@ -44,17 +44,11 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     self.title=@"问题";
     self.questionType=@"查询最新问题";
     self.automaticallyAdjustsScrollViewInsets=NO;
-    [self.view addSubview:self.segmentedControl];
+    
     [self addChildViewController:self.questionLastest];
     [self addChildViewController:self.questionHot];
     [self addChildViewController:self.questionNoAnswer];
-    [self.view addSubview:self.questionLastest.view];
-    
     self.currentViewController=self.questionLastest;
-    
-    self.questionLastest.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
-    self.questionHot.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
-    self.questionNoAnswer.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
     
     [self layoutPageViews];
     
@@ -89,8 +83,12 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     if (_questionLastest==nil) {
         OSFQuestionLatest *lastest=[[OSFQuestionLatest alloc] initWithStyle:UITableViewStylePlain];
-        
+        lastest.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-64.0-55.0);
         _questionLastest = lastest;
+        
+        
+        [self.view addSubview:self.questionLastest.view];
+        
     }
     
     return _questionLastest;
@@ -99,9 +97,11 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 -(OSFQuestionHot *)questionHot
 {
     if (_questionHot==nil) {
-        OSFQuestionHot *hot=[[OSFQuestionHot alloc] initWithStyle:UITableViewStylePlain];
-        
+        OSFQuestionHot *hot=[[OSFQuestionHot alloc] init];
+        hot.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-64.0-55.0);
         _questionHot=hot;
+        
+        
     }
     
     return _questionHot;
@@ -110,8 +110,11 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 -(OSFQuestionNoAnswer *)questionNoAnswer
 {
     if (_questionNoAnswer==nil) {
-        OSFQuestionNoAnswer *answer=[[OSFQuestionNoAnswer alloc] initWithStyle:UITableViewStylePlain];
+        OSFQuestionNoAnswer *answer=[[OSFQuestionNoAnswer alloc] init];
+        answer.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-64.0-64.0);
         _questionNoAnswer=answer;
+        
+        
     }
     return _questionNoAnswer;
 }
@@ -125,6 +128,8 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
         segmented.tintColor=[OColors OSFNavBarColor];
         
         _segmentedControl=segmented;
+        
+        [self.view addSubview:self.segmentedControl];
     }
     return _segmentedControl;
 }
@@ -174,7 +179,6 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
             [oldController removeFromParentViewController];
             self.currentViewController = newController;
 
-            
         }else{
             
             self.currentViewController = oldController;

@@ -13,7 +13,7 @@
 @interface OSFSearchBarView ()<UISearchBarDelegate>
 
 @property(nonatomic, strong)UISearchBar *searchBar;
-
+@property(nonatomic, strong)MASConstraint *topConstraint;
 @end
 
 @implementation OSFSearchBarView
@@ -28,26 +28,37 @@
         [self addSubview:self.searchBar];
         [self initConstraints];
         
-        [OLog showMessage:@"-----search bar"];
     }
     return self;
 }
 
 - (void)didMoveToWindow {
-    
     [super didMoveToWindow];
-}
--(void)didMoveToSuperview
-{
+    [self layoutIfNeeded];
     
+    if (self.window) {
+        self.topConstraint.offset=0;
+        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            [self layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
 }
+-(void)removeFromSuperview
+{
+    self.topConstraint.offset=-40;
+    [super removeFromSuperview];
+}
+
 #pragma mark -- 布局
 -(void)initConstraints
 {
-    CGSize size=[UIScreen mainScreen].bounds.size;
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(size.width, 40));
-        self.topConstraint= make.top.mas_equalTo(-40);
+        make.size.mas_equalTo(CGSizeMake(self.bounds.size.width, 40));
+        self.topConstraint= make.top.mas_equalTo(
+        self).offset(-40);
     }];
 }
 
@@ -56,9 +67,7 @@
 -(UISearchBar *)searchBar
 {
     if (!_searchBar) {
-        CGSize size=[UIScreen mainScreen].bounds.size;
         UISearchBar *search=[[UISearchBar alloc] initWithFrame:CGRectZero];
-        search.frame=CGRectMake(0, -40, size.width, 40);
         search.delegate=self;
         search.searchBarStyle=UISearchBarStyleDefault;
         [search setBackgroundImage:[self searchBackgroundImage] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];

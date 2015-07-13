@@ -132,15 +132,9 @@
         
         [self.view addSubview:self.searchBarView];
         self.searchBarView.placeholder=[self searchbarPlaceholder];
-        self.searchBarView.topConstraint.mas_equalTo(0);
-        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.searchBarView layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            
-        }];
+       
     }else{
-        self.searchBarView.topConstraint.mas_equalTo(-40);
-        [self.searchBarView layoutIfNeeded];
+        
         [self.searchBarView removeFromSuperview];
         
     }

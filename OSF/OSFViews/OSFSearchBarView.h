@@ -11,5 +11,5 @@
 @interface OSFSearchBarView : OSFBaseView
 
 @property(nonatomic, copy) NSString *placeholder;
-@property(nonatomic, strong)MASConstraint *topConstraint;
+
 @end

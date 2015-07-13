@@ -9,7 +9,14 @@
 #import "OSFQuestionLatest.h"
 #import "OSFCellCollection.h"
 #import <objc/message.h>
-@interface OSFQuestionLatest ()
+#import "OTableViewRefresh.h"
+#import "OSFRefreshView.h"
+@interface OSFQuestionLatest ()<OTableViewRefreshDelegate,OSFRefreshViewDelegate>
+
+///自己得刷新类
+@property(nonatomic, strong) OTableViewRefresh *orefreshControl;
+///第一次  界面上没数据时的刷新控件
+@property(nonatomic, strong) OSFRefreshView *osfRefreshView;
 
 @end
 
@@ -17,25 +24,85 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [OSFCellCollection registerQuestionCell:self.tableView];
+    self.tableView.hidden=NO;
+    [self.osfRefreshView o_startRefresh];
     
+    [self.orefreshControl o_tableViewHeadRefresh:self.tableView];
+    [self.orefreshControl o_tableViewFootRefresh:self.tableView];
+    
+    self.tableView.tableFooterView=[[UIView alloc] init];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [OLog showMessage:@"latest frame :%@",NSStringFromCGRect(self.view.bounds)];
+    
+   
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+#pragma mark --refresh table
+-(OSFRefreshView *)osfRefreshView
+{
+    if (!_osfRefreshView) {
+        OSFRefreshView *rv=[[OSFRefreshView alloc] initWithFrame:CGRectMake(0, -55, self.tableView.bounds.size.width,self.tableView.bounds.size.height-55)];
+        rv.delegate=self;
+        
+        _osfRefreshView=rv;
+        
+        [self.view insertSubview:_osfRefreshView belowSubview:self.tableView];
+    }
+    
+    return _osfRefreshView;
+}
 
+#pragma mark --refresh table
+-(OTableViewRefresh *)orefreshControl
+{
+    if (!_orefreshControl) {
+        OTableViewRefresh *refresh=[[OTableViewRefresh alloc] init];
+        refresh.delegate=self;
+        _orefreshControl=refresh;
+    }
+    return _orefreshControl;
+}
 
+-(void)o_loadNewData
+{
+    __weak OSFQuestionLatest * WEAKSELF = self;
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+        [WEAKSELF.orefreshControl o_endHeadRefresh:WEAKSELF.tableView];
+    });
+}
+-(void)o_loadMoreData
+{
+    __weak OSFQuestionLatest * WEAKSELF = self;
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+        [WEAKSELF.orefreshControl o_endFootRefresh:WEAKSELF.tableView];
+    });
+}
+
+#pragma mark  -- table delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 30;
+    return 20;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -44,6 +111,7 @@
   
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static UITableViewCell *cell = nil;
@@ -66,6 +134,5 @@
 {
     return 70.0;
 }
-
 
 @end
