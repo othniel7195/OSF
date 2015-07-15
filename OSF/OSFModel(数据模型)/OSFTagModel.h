@@ -17,4 +17,5 @@
 @property(nonatomic, copy)NSString *similarTags;
 ///标签 url
 @property(nonatomic, copy)NSString *url;
+
 @end
