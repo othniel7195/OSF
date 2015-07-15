@@ -75,10 +75,11 @@
         //get
        request.orequestOpertion = [self.manager GET:[self buildRequestUrl:request] parameters:[self buildRequestParams:request] success:^(AFHTTPRequestOperation * operation, id responseObject) {
            
+           [self handleRequestResult:operation];
            
         } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
             
-            
+            [self handleRequestResult:operation];
         }];
         
     }else if ([request o_requestMethod]==ORequestMethodPost)
@@ -86,10 +87,10 @@
         //post
         request.orequestOpertion = [self.manager POST:[self buildRequestUrl:request] parameters:[self buildRequestParams:request] success:^(AFHTTPRequestOperation * operation, id responseObject) {
             
-            
+            [self handleRequestResult:operation];
         } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
             
-            
+            [self handleRequestResult:operation];
         }];
     }
     
@@ -129,6 +130,28 @@
 }
 
 #pragma mark -- 网络请求回调数据的
+-(void)handleRequestResult:(AFHTTPRequestOperation *)operation
+{
+    NSString *key =[self requestHashKey:operation];
+    ONetBaseRequest *request =self.requestRecords[key];
+    if (request) {
+        BOOL successed=[self checkResult:request];
+        if (successed) {
+            
+            if (request.successCompletionBlock) {
+                request.successCompletionBlock(request);
+            }
+        }else{
+            if (request.failureCompletionBlock) {
+                request.failureCompletionBlock(request);
+            }
+        }
+        
+    }
+    
+    [self removeOperation:operation];
+    [request clearCompletionBlock];
+}
 
 #pragma mark -- 组合request 和基础 config
 /// 根据request和networkConfig构建url

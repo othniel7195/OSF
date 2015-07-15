@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, ORequestSerializerType)
 -(NSDictionary *)o_requestParams;
 ///自己接口的URL地址  不包含基础url的
 -(NSString *)o_requestURL;
-///请求超时时间 默认20s
+///请求超时时间 默认60s
 -(NSTimeInterval)o_requestTimeoutInterval;
 ///请求的序列化 默认json
 -(ORequestSerializerType)o_requestSerializerType;

@@ -10,6 +10,7 @@
 #import "OSFLeftViewController.h"
 #import "OSFBaseNavigationController.h"
 #import "OSFQuestions.h"
+#import "ONetConfig.h"
 @interface AppDelegate ()
 
 @end
@@ -35,7 +36,14 @@
     
     [self.window makeKeyAndVisible];
     
+    [self stepNetWorkBaseConfig];
+    
     return YES;
+}
+
+-(void)stepNetWorkBaseConfig
+{
+    [[ONetConfig sharedNetConfig] addNetBaseURL:@"http://api.segmentfault.com/"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -7,10 +7,8 @@
 //
 
 #import "ONetBaseRequest.h"
-
+#import "ONetClient.h"
 @implementation ONetBaseRequest
-
-
 
 
 -(ORequestMethod)o_requestMethod
@@ -27,7 +25,7 @@
 }
 -(NSTimeInterval)o_requestTimeoutInterval
 {
-    return 20.0;
+    return 60.0;
 }
 -(ORequestSerializerType)o_requestSerializerType
 {
@@ -51,6 +49,7 @@
                                     failure:(void (^)(ONetBaseRequest *request))failure
 {
     [self setCompletionBlockWithSuccess:success failure:failure];
+    [self start];
 }
 
 - (void)setCompletionBlockWithSuccess:(void (^)(ONetBaseRequest *request))success
@@ -66,11 +65,11 @@
 }
 - (void)start
 {
-    
+    [[ONetClient sharedNetClient] addRequest:self];
 }
 - (void)stop
 {
-    
+    [[ONetClient sharedNetClient] cancelRequest:self];
 }
 
 - (BOOL)isExecuting
