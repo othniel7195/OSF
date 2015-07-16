@@ -10,9 +10,18 @@
 #import "OSFCellCollection.h"
 #import <objc/message.h>
 #import "OTableViewRefresh.h"
+#import "OSFRefreshView.h"
+#import "QuestionHotHandle.h"
+#import "OSFQuestionModel.h"
+#import "OTypes.h"
 @interface OSFQuestionHot ()<OTableViewRefreshDelegate>
 ///自己得刷新类
 @property(nonatomic, strong) OTableViewRefresh *orefreshControl;
+///第一次  界面上没数据时的刷新控件
+@property(nonatomic, strong) OSFRefreshView *osfRefreshView;
+///最热问题操作
+@property(nonatomic, strong) QuestionHotNet *qLatestHandle;
+
 @end
 
 @implementation OSFQuestionHot

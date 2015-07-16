@@ -145,6 +145,8 @@
 		D5D8193D1B515B3600FA18F9 /* OSFTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D8193C1B515B3600FA18F9 /* OSFTagsCell.m */; };
 		D5D819421B517B6000FA18F9 /* OSFUserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819411B517B6000FA18F9 /* OSFUserLogin.m */; };
 		D5D819451B517C0400FA18F9 /* OSFTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */; };
+		D5DA10BB1B57FC2E008E042E /* QuestionHotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DA10BA1B57FC2E008E042E /* QuestionHotNet.m */; };
+		D5DA10BE1B57FD72008E042E /* QuestionHotHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DA10BD1B57FD72008E042E /* QuestionHotHandle.m */; };
 		D5DCF4E31B5298A000FAE731 /* OSFUserLoginSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E21B5298A000FAE731 /* OSFUserLoginSuccess.m */; };
 		D5DCF4E61B52A2B600FAE731 /* OSFSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E51B52A2B600FAE731 /* OSFSearchBarView.m */; };
 		D5DCF4E91B52B10100FAE731 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E81B52B10100FAE731 /* UIImage+ImageWithColor.m */; };
@@ -410,6 +412,10 @@
 		D5D819411B517B6000FA18F9 /* OSFUserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUserLogin.m; sourceTree = "<group>"; };
 		D5D819431B517C0400FA18F9 /* OSFTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFTextFieldCell.h; sourceTree = "<group>"; };
 		D5D819441B517C0400FA18F9 /* OSFTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFTextFieldCell.m; sourceTree = "<group>"; };
+		D5DA10B91B57FC2E008E042E /* QuestionHotNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionHotNet.h; sourceTree = "<group>"; };
+		D5DA10BA1B57FC2E008E042E /* QuestionHotNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionHotNet.m; sourceTree = "<group>"; };
+		D5DA10BC1B57FD72008E042E /* QuestionHotHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionHotHandle.h; sourceTree = "<group>"; };
+		D5DA10BD1B57FD72008E042E /* QuestionHotHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionHotHandle.m; sourceTree = "<group>"; };
 		D5DCF4E01B526D2700FAE731 /* OSFTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFTextFieldDelegate.h; sourceTree = "<group>"; };
 		D5DCF4E11B5298A000FAE731 /* OSFUserLoginSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFUserLoginSuccess.h; sourceTree = "<group>"; };
 		D5DCF4E21B5298A000FAE731 /* OSFUserLoginSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFUserLoginSuccess.m; sourceTree = "<group>"; };
@@ -566,6 +572,10 @@
 				D55675771B568CF90012DD1B /* QuestionLatestNet.m */,
 				D55675791B5696B30012DD1B /* QuestionLatestHandle.h */,
 				D556757A1B5696B30012DD1B /* QuestionLatestHandle.m */,
+				D5DA10B91B57FC2E008E042E /* QuestionHotNet.h */,
+				D5DA10BA1B57FC2E008E042E /* QuestionHotNet.m */,
+				D5DA10BC1B57FD72008E042E /* QuestionHotHandle.h */,
+				D5DA10BD1B57FD72008E042E /* QuestionHotHandle.m */,
 			);
 			path = "OSFModelHandle(数据操作)";
 			sourceTree = "<group>";
@@ -1155,6 +1165,7 @@
 				D556757B1B5696B30012DD1B /* QuestionLatestHandle.m in Sources */,
 				D53F47BB1B4BCAA200520179 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D53F47BC1B4BCAA200520179 /* UIWebView+AFNetworking.m in Sources */,
+				D5DA10BB1B57FC2E008E042E /* QuestionHotNet.m in Sources */,
 				D54644C11B5368C200F464C2 /* MJRefreshBackFooter.m in Sources */,
 				D53F47761B4BCA8200520179 /* AFHTTPRequestOperation.m in Sources */,
 				D54644C51B5368C200F464C2 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -1200,6 +1211,7 @@
 				D51541401B4E87EC00255792 /* OSFArticlesCell.m in Sources */,
 				D53F47B51B4BCAA200520179 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D5517DE01B4E169F00704550 /* OSFQuestionHot.m in Sources */,
+				D5DA10BE1B57FD72008E042E /* QuestionHotHandle.m in Sources */,
 				D53F477A1B4BCA8200520179 /* AFSecurityPolicy.m in Sources */,
 				D5DCF4E91B52B10100FAE731 /* UIImage+ImageWithColor.m in Sources */,
 				D53F47F01B4BCFB000520179 /* OSFBaseCell.m in Sources */,

@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4CD2AAB8-0465-4EE9-BC9E-171D661F5364</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>OSF</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>15242BD7A407469B7EEFB023981D7C06FE581138</key>
 		<string>https://github.com/wjszf/OSF.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OSF.xcodeproj/project.xcworkspace</string>
+	<string>OSF.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>15242BD7A407469B7EEFB023981D7C06FE581138</key>

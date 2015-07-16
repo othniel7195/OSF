@@ -1,30 +1,29 @@
 //
-//  QuestionLatestHandle.m
+//  QuestionHotHandle.m
 //  OSF
 //
-//  Created by 赵锋 on 15/7/15.
+//  Created by 赵锋 on 15/7/16.
 //  Copyright (c) 2015年 赵锋. All rights reserved.
 //
 
-#import "QuestionLatestHandle.h"
-#import "OLog.h"
+#import "QuestionHotHandle.h"
 
-@interface QuestionLatestHandle ()
+@interface QuestionHotHandle ()
 
 @property(nonatomic, strong, readwrite)OSFPageModel *pageModel;
 @property(nonatomic, strong, readwrite)NSMutableArray *questionArrs;
 
 @end
 
-@implementation QuestionLatestHandle
+@implementation QuestionHotHandle
 
 -(instancetype)init
 {
     self=[super init];
     if (!self) return nil;
     
-    _qLatestNet=[[QuestionLatestNet alloc] init];
-    _qLatestNet.page=@"1";
+    _qHotNet=[[QuestionHotNet alloc] init];
+    _qHotNet.page=@"1";
     _questionArrs=[NSMutableArray array];
     
     return self;
@@ -32,13 +31,13 @@
 
 -(void)startNetWorking
 {
-    [self.qLatestNet startWithCompletionBlockWithSuccess:^(ONetBaseRequest *request) {
+    [self.qHotNet startWithCompletionBlockWithSuccess:^(ONetBaseRequest *request) {
         
         NSDictionary *dataDic=[request.responseJSONObject objectForKey:@"data"];
         NSString *status = [request.responseJSONObject objectForKey:@"status"];
         
         if ([status integerValue]==0) {
-            [OLog showMessage:@"问题请求 成功"];
+
             NSDictionary *page =[dataDic objectForKey:@"page"];
             NSArray *rows =[dataDic objectForKey:@"rows"];
             
@@ -63,7 +62,6 @@
         }else
         {
             NSString *msg = [request.responseJSONObject objectForKey:@"message"];
-            [OLog showMessage:@"问题请求 报错 msg :%@",msg];
             
             self.failureBlock();
             [self clearBlock];
@@ -72,9 +70,6 @@
         
     } failure:^(ONetBaseRequest *request) {
         
-        NSError *error = [request o_requestError];
-        
-        [OLog showMessage:@"问题最新 Error :%@",error];
         self.failureBlock();
         [self clearBlock];
         
@@ -82,7 +77,7 @@
 }
 -(void)stopNetWorking
 {
-    [self.qLatestNet stop];
+    [self.qHotNet stop];
     
 }
 #pragma  mark -- 一些清理操作
@@ -105,9 +100,5 @@
     return self.questionArrs[index];
 }
 
-#pragma mark -- delloc
--(void)dealloc
-{
-    [OLog showMessage:@"qlatest handle 释放了------"];
-}
+
 @end

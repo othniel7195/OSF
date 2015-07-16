@@ -247,6 +247,11 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     return self.questionType;
 }
 
+#pragma mark -- delloc
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:tableRolling object:nil];
+}
 
 
 @end
