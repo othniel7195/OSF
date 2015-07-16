@@ -12,33 +12,33 @@
 #import "OSFLastAnswer.h"
 @interface OSFQuestionModel : NSObject
 ///回答人数
-@property(nonatomic, copy)NSString *answers;
+@property(nonatomic, assign)NSInteger answers;
 ///书签数
-@property(nonatomic, copy)NSString *bookmarks;
+@property(nonatomic, assign)NSInteger bookmarks;
 ///创建时间
-@property(nonatomic, copy)NSString *created;
+@property(nonatomic, assign)long long created;
 ///创建时间的 文字表示
 @property(nonatomic, copy)NSString *createdDate;
 ///摘录
 @property(nonatomic, copy)NSString *excerpt;
 /// id 标识
-@property(nonatomic, copy)NSString *index;//id
+@property(nonatomic, assign)long long index;//id
 ///被关注 false true
-@property(nonatomic, copy)NSString *isAccepted;
+@property(nonatomic, assign)NSInteger isAccepted;
 ///被标签 false true
-@property(nonatomic, copy)NSString *isBookmarked;
+@property(nonatomic, assign)NSInteger isBookmarked;
 ///被关闭
-@property(nonatomic, copy)NSString *isClosed;
+@property(nonatomic, assign)NSInteger isClosed;
 ///
-@property(nonatomic, copy)NSString *siteId;
+@property(nonatomic, assign)long long siteId;
 ///标题
 @property(nonatomic, copy)NSString *title;
 ///问题 url
 @property(nonatomic, copy)NSString *url;
 
-@property(nonatomic, copy)NSString *viewsWord;
+@property(nonatomic, assign)NSInteger viewsWord;
 ///投票
-@property(nonatomic, copy)NSString *votes;
+@property(nonatomic, assign)NSInteger votes;
 
 @property(nonatomic, strong)OSFUserModel *user;
 @property(nonatomic, strong)OSFLastAnswer *lastAnswer;

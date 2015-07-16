@@ -14,6 +14,7 @@
 #import "OSFQuestionLatest.h"
 #import "QuestionLatestHandle.h"
 #import "OSFQuestionModel.h"
+#import "OTypes.h"
 @interface OSFQuestionLatest ()<OTableViewRefreshDelegate,OSFRefreshViewDelegate>
 
 ///自己得刷新类
@@ -41,7 +42,7 @@
     
     self.tableView.tableFooterView=[[UIView alloc] init];
     
-    [self stepLastestQuestionNetWork];
+    [self stepLastestQuestionNetWork:ONetWorkFirst];
 }
 
 -(void)viewDidLayoutSubviews
@@ -60,30 +61,63 @@
 
 #pragma mark -- 网络操作
 
--(void)stepLastestQuestionNetWork
+-(void)stepLastestQuestionNetWork:(ONetWorkState)networkState
 {
+    
     [self.qLatestHandle startNetWorking];
     
     __weak typeof(self) weakSelf = self;
     self.qLatestHandle.successBlock = ^{
         
-        [OLog showMessage:@"latest ok"];
+        switch (networkState) {
+            case ONetWorkFirst:
+            {
+                [weakSelf.tableView reloadData];
+                
+                [weakSelf.osfRefreshView  o_endRefresh];
+                [weakSelf.osfRefreshView removeFromSuperview];
+            }
+                break;
+            case ONetWorkTopPull:
+            {
+                
+                [weakSelf.tableView reloadData];
+                [weakSelf.orefreshControl o_endHeadRefresh:weakSelf.tableView];
+            }
+                break;
+            case ONetWorkBottomPull:
+            {
+                [weakSelf.tableView reloadData];
+                [weakSelf.orefreshControl o_endFootRefresh:weakSelf.tableView];
+            }
+                break;
+        }
         
-        [weakSelf.tableView reloadData];
-        
-        [weakSelf.osfRefreshView  o_endRefresh];
-        [weakSelf.osfRefreshView removeFromSuperview];
     };
     
     self.qLatestHandle.failureBlock = ^{
-      
-        [OLog showMessage:@"latest fail"];
         
-        [weakSelf.osfRefreshView  o_endRefresh];
+        switch (networkState) {
+            case ONetWorkFirst:
+            {
+               [weakSelf.osfRefreshView  o_endRefresh];
+            }
+                break;
+            case ONetWorkTopPull:
+            {
+                [weakSelf.orefreshControl o_endHeadRefresh:weakSelf.tableView];
+            }
+                break;
+            case ONetWorkBottomPull:
+            {
+                [weakSelf.orefreshControl o_endFootRefresh:weakSelf.tableView];
+            }
+                break;
+        }
     };
-    
-    
+   
 }
+
 
 -(QuestionLatestHandle *)qLatestHandle
 {
@@ -114,7 +148,7 @@
 -(void)OSFRefreshViewReloadData
 {
     
-    [self stepLastestQuestionNetWork];
+    [self stepLastestQuestionNetWork:ONetWorkFirst];
 }
 
 #pragma mark --refresh table
@@ -130,21 +164,14 @@
 
 -(void)o_loadNewData
 {
-    __weak OSFQuestionLatest * WEAKSELF = self;
-    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
-    dispatch_after(time, dispatch_get_main_queue(), ^{
-        
-        [WEAKSELF.orefreshControl o_endHeadRefresh:WEAKSELF.tableView];
-    });
+    
+    self.qLatestHandle.qLatestNet.page=@"1";
+    [self stepLastestQuestionNetWork:ONetWorkTopPull];
 }
 -(void)o_loadMoreData
 {
-    __weak OSFQuestionLatest * WEAKSELF = self;
-    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, (int64_t) (2.0*NSEC_PER_SEC));
-    dispatch_after(time, dispatch_get_main_queue(), ^{
-        
-        [WEAKSELF.orefreshControl o_endFootRefresh:WEAKSELF.tableView];
-    });
+    self.qLatestHandle.qLatestNet.page=[NSString stringWithFormat:@"%ld",self.qLatestHandle.pageModel.next];
+    [self stepLastestQuestionNetWork:ONetWorkBottomPull];
 }
 
 #pragma mark  -- table delegate
@@ -161,8 +188,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OSFQuestionModel *QModel=[self.qLatestHandle questionWithIndex:indexPath.row];
-    [OLog showMessage:@"qmodel :%@",QModel];
-    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:QModel.answers questionStatus:0 userName:@"赵锋" date:QModel.createdDate content:QModel.title];
+    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:[NSString stringWithFormat:@"%ld",QModel.answers] questionStatus:0 userName:QModel.user.name date:QModel.createdDate content:QModel.title];
   
     return cell;
 }

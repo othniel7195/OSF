@@ -10,7 +10,7 @@
 
 @interface OSFTagModel : NSObject
 ///id
-@property(nonatomic, copy)NSString *index;
+@property(nonatomic, assign)NSInteger index;
 ///标签名
 @property(nonatomic, copy)NSString *name;
 ///相似的标签数组

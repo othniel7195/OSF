@@ -383,6 +383,7 @@
 		D54D9C691B57A5CE00ACF533 /* NSNull+InternalNullExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+InternalNullExtention.m"; sourceTree = "<group>"; };
 		D54D9C6B1B57A6D200ACF533 /* NSNull+OVNatural.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+OVNatural.h"; sourceTree = "<group>"; };
 		D54D9C6C1B57A6D200ACF533 /* NSNull+OVNatural.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+OVNatural.m"; sourceTree = "<group>"; };
+		D54D9C701B57AFF400ACF533 /* OTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTypes.h; sourceTree = "<group>"; };
 		D5517DDE1B4E169F00704550 /* OSFQuestionHot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFQuestionHot.h; sourceTree = "<group>"; };
 		D5517DDF1B4E169F00704550 /* OSFQuestionHot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFQuestionHot.m; sourceTree = "<group>"; };
 		D5517DE11B4E184000704550 /* OSFQuestionNoAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFQuestionNoAnswer.h; sourceTree = "<group>"; };
@@ -680,6 +681,7 @@
 				D54D9C691B57A5CE00ACF533 /* NSNull+InternalNullExtention.m */,
 				D54D9C6B1B57A6D200ACF533 /* NSNull+OVNatural.h */,
 				D54D9C6C1B57A6D200ACF533 /* NSNull+OVNatural.m */,
+				D54D9C701B57AFF400ACF533 /* OTypes.h */,
 			);
 			path = OTools;
 			sourceTree = "<group>";

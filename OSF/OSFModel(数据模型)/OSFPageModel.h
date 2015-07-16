@@ -11,13 +11,13 @@
 @interface OSFPageModel : NSObject
 
 ///当前页码数
-@property(nonatomic, copy)NSString *current;
+@property(nonatomic, assign)NSInteger current;
 ///下一页页码数
-@property(nonatomic, copy)NSString *next;
+@property(nonatomic, assign)NSInteger next;
 ///当前页数据数量
-@property(nonatomic, copy)NSString *size;
+@property(nonatomic, assign)NSInteger size;
 ///总共数据数量
-@property(nonatomic, copy)NSString *total;
+@property(nonatomic, assign)NSInteger total;
 
 -(instancetype)initWithDic:(NSDictionary *)dic;
 

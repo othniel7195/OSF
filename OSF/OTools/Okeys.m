@@ -19,7 +19,3 @@ NSString * const TagCell =@"tagCell";
 NSString * const TextFieldCell=@"textFieldCell";
 
 NSString * const cellStatus=@"cellStatus";
-
-
-
-

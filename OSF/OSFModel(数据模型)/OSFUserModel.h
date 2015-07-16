@@ -12,11 +12,11 @@
 ///头像地址
 @property(nonatomic, copy)NSString *avatarUrl;
 ///id
-@property(nonatomic, copy)NSString *index;
+@property(nonatomic, assign)long long index;
 ///用户名
 @property(nonatomic, copy)NSString *name;
 ///等级
-@property(nonatomic, copy)NSString *rank;
+@property(nonatomic, assign)NSInteger rank;
 ///
 @property(nonatomic, copy)NSString *url;
 

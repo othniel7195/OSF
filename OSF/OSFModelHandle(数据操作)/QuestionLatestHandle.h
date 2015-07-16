@@ -26,6 +26,8 @@
 
 -(void)startNetWorking;
 -(void)stopNetWorking;
+///清空数据源
+-(void)clearQuestions;
 
 ///获取某条数据
 -(OSFQuestionModel *)questionWithIndex:(NSInteger)index;

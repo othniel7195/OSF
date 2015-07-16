@@ -25,6 +25,7 @@
     
     _qLatestNet=[[QuestionLatestNet alloc] init];
     _qLatestNet.page=@"1";
+    _questionArrs=[NSMutableArray array];
     
     return self;
 }
@@ -43,15 +44,18 @@
             
             self.pageModel=[[OSFPageModel alloc] initWithDic:page];
             
-            NSMutableArray *mArray = [NSMutableArray array];
+            if (self.pageModel.current == 1) {
+                //如果是第一页
+                //清空数据源
+                
+                [self clearQuestions];
+            }
             
             [rows enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
                 
                 OSFQuestionModel *questionModel = [[OSFQuestionModel alloc] initWithDic:obj];
-                [mArray addObject:questionModel];
+                [self.questionArrs  addObject:questionModel];
             }];
-            
-            self.questionArrs=[mArray mutableCopy];
             
             self.successBlock();
             [self clearBlock];
@@ -80,14 +84,17 @@
 {
     
 }
-
+#pragma  mark -- 一些清理操作
 //把block置为nil
 -(void)clearBlock
 {
     self.successBlock=nil;
     self.failureBlock=nil;
 }
-
+-(void)clearQuestions
+{
+    [self.questionArrs removeAllObjects];
+}
 #pragma mark -- 数据操作
 -(OSFQuestionModel *)questionWithIndex:(NSInteger)index
 {

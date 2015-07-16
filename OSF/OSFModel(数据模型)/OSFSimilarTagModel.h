@@ -11,7 +11,7 @@
 @interface OSFSimilarTagModel : NSObject
 
 ///id
-@property(nonatomic, copy)NSString *index;
+@property(nonatomic, assign)NSInteger index;
 ///标签名字
 @property(nonatomic, copy)NSString *name;
 
