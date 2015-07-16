@@ -38,11 +38,16 @@
 -(BOOL)statusCodevalidator
 {
     NSInteger statusCode = [self responseStatusCode];
+    
     if (statusCode>=200&&statusCode<=299) {
         return YES;
     }
     
     return NO;
+}
+-(NSError *)o_requestError
+{
+    return  self.orequestOpertion.error;
 }
 
 - (void)startWithCompletionBlockWithSuccess:(void (^)(ONetBaseRequest *request))success

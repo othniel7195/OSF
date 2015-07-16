@@ -14,4 +14,5 @@
 ///最新问题 请求
 @property(nonatomic, strong)QuestionLatestNet *qLatestNet;
 -(void)startNetWorking;
+-(void)stopNetWorking;
 @end

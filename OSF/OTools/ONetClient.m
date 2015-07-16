@@ -75,10 +75,12 @@
         //get
        request.orequestOpertion = [self.manager GET:[self buildRequestUrl:request] parameters:[self buildRequestParams:request] success:^(AFHTTPRequestOperation * operation, id responseObject) {
            
+           [OLog showMessage:@"请求成功"];
            [self handleRequestResult:operation];
            
         } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
             
+            [OLog showMessage:@"请求失败"];
             [self handleRequestResult:operation];
         }];
         
@@ -95,7 +97,7 @@
     }
     
     
-    [self addRequest:request];
+    [self addOperation:request];
 }
 - (void)cancelRequest:(ONetBaseRequest *)request
 {
@@ -115,6 +117,8 @@
 //验证请求结果
 -(BOOL)checkResult:(ONetBaseRequest *)request
 {
+    
+    
     BOOL result = [request statusCodevalidator];
     if (!result) {
         return result;
@@ -166,8 +170,8 @@
 /// 根据request和networkConfig构建请求参数
 - (NSMutableDictionary *)buildRequestParams:(ONetBaseRequest *)request
 {
-    NSAssert([request o_requestParams]==nil, @"request params 不能为nil");
-    NSAssert(self.config.globalParams==nil, @"全局参数 不能为 nil");
+    NSAssert([request o_requestParams]!=nil, @"request params 不能为nil");
+    NSAssert(self.config.globalParams!=nil, @"全局参数 不能为 nil");
     NSMutableDictionary *params_mdic=[[NSMutableDictionary alloc] init];
     
     params_mdic = [self.config.globalParams mutableCopy];

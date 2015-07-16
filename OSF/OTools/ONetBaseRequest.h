@@ -53,6 +53,8 @@ typedef NS_ENUM(NSInteger, ORequestSerializerType)
 -(id)jsonValidator;
 ///检测statusCode 是否正确
 -(BOOL)statusCodevalidator;
+///网络错误信息
+-(NSError *)o_requestError;
 
 //--------------------
 /// block回调

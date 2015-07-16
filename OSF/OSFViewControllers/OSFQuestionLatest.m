@@ -11,12 +11,17 @@
 #import <objc/message.h>
 #import "OTableViewRefresh.h"
 #import "OSFRefreshView.h"
+#import "OSFQuestionLatest.h"
+#import "QuestionLatestHandle.h"
 @interface OSFQuestionLatest ()<OTableViewRefreshDelegate,OSFRefreshViewDelegate>
 
 ///自己得刷新类
 @property(nonatomic, strong) OTableViewRefresh *orefreshControl;
 ///第一次  界面上没数据时的刷新控件
 @property(nonatomic, strong) OSFRefreshView *osfRefreshView;
+///最新问题操作
+@property(nonatomic, strong) QuestionLatestHandle *qLatestHandle;
+
 
 @end
 
@@ -34,6 +39,9 @@
     [self.orefreshControl o_tableViewFootRefresh:self.tableView];
     
     self.tableView.tableFooterView=[[UIView alloc] init];
+    
+    
+    [self.qLatestHandle startNetWorking];
 }
 
 -(void)viewDidLayoutSubviews
@@ -49,6 +57,20 @@
     [super didReceiveMemoryWarning];
     
 }
+
+#pragma mark -- 网络操作
+-(QuestionLatestHandle *)qLatestHandle
+{
+    if (_qLatestHandle==nil) {
+        
+        QuestionLatestHandle *handle =[[QuestionLatestHandle alloc] init];
+        
+        _qLatestHandle=handle;
+    }
+    
+    return _qLatestHandle;
+}
+
 #pragma mark --refresh table
 -(OSFRefreshView *)osfRefreshView
 {
