@@ -15,7 +15,7 @@
 #import "QuestionLatestHandle.h"
 #import "OSFQuestionModel.h"
 #import "OTypes.h"
-@interface OSFQuestionLatest ()<OTableViewRefreshDelegate,OSFRefreshViewDelegate>
+@interface OSFQuestionLatest ()<OTableViewRefreshDelegate,OSFRefreshViewDelegate,UIScrollViewDelegate>
 
 ///自己得刷新类
 @property(nonatomic, strong) OTableViewRefresh *orefreshControl;
@@ -23,7 +23,6 @@
 @property(nonatomic, strong) OSFRefreshView *osfRefreshView;
 ///最新问题操作
 @property(nonatomic, strong) QuestionLatestHandle *qLatestHandle;
-
 
 @end
 
@@ -34,8 +33,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [OSFCellCollection registerQuestionCell:self.tableView];
-    self.tableView.hidden=NO;
     [self.osfRefreshView o_startRefresh];
+    
+    //tableView上什么数据都没的时候禁止滚动
+    self.tableView.scrollEnabled=NO;
     
     [self.orefreshControl o_tableViewHeadRefresh:self.tableView];
     [self.orefreshControl o_tableViewFootRefresh:self.tableView];
@@ -43,21 +44,31 @@
     self.tableView.tableFooterView=[[UIView alloc] init];
     
     [self stepLastestQuestionNetWork:ONetWorkFirst];
+    
+    
+    
 }
 
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    [OLog showMessage:@"latest frame :%@",NSStringFromCGRect(self.view.bounds)];
-    
-   
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+
+#pragma mark -- scrollView delegate
+
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    NSValue *value =[NSValue valueWithCGPoint:velocity];
+        
+    [[NSNotificationCenter defaultCenter] postNotificationName:tableRolling object:value];
+}
+
 
 #pragma mark -- 网络操作
 
@@ -72,8 +83,8 @@
         switch (networkState) {
             case ONetWorkFirst:
             {
+                weakSelf.tableView.scrollEnabled=YES;
                 [weakSelf.tableView reloadData];
-                
                 [weakSelf.osfRefreshView  o_endRefresh];
                 [weakSelf.osfRefreshView removeFromSuperview];
             }
@@ -188,7 +199,25 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OSFQuestionModel *QModel=[self.qLatestHandle questionWithIndex:indexPath.row];
-    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:[NSString stringWithFormat:@"%ld",QModel.answers] questionStatus:0 userName:QModel.user.name date:QModel.createdDate content:QModel.title];
+    NSInteger questionStatus=0;
+    if (QModel.answers>0) {
+        
+        if (QModel.isAccepted==1) {
+            questionStatus=2;
+        }else{
+            questionStatus=1;
+        }
+        
+    }else{
+        questionStatus=0;
+    }
+    
+    NSString *createdDate=QModel.lastAnswer.createdDate;
+    if (createdDate==nil) {
+        createdDate=QModel.createdDate;
+    }
+    
+    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:[NSString stringWithFormat:@"%ld",QModel.answers] questionStatus:questionStatus userName:QModel.user.name date:createdDate content:QModel.title];
   
     return cell;
 }
@@ -216,6 +245,12 @@
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 70.0;
+}
+
+#pragma mark --delloc
+-(void)dealloc
+{
+    [OLog showMessage:@"question latest 释放了"];
 }
 
 @end

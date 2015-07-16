@@ -69,7 +69,7 @@
         aiv.font=[UIFont systemFontOfSize:12.0];
         aiv.textColor=[OColors OSFNavBarColor];
         aiv.text=@"加载数据中...";
-        
+        aiv.userInteractionEnabled=YES;
         UITapGestureRecognizer *touchActivityIndicatorlabel=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reloadData)];
         [aiv addGestureRecognizer:touchActivityIndicatorlabel];
         

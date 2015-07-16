@@ -12,7 +12,7 @@
 #import "OSFQuestionNoAnswer.h"
 #import "Masonry.h"
 #import "OColors.h"
-
+#import "Okeys.h"
 typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     OSFQLastest, // 最新
@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 
 @property(nonatomic, copy) NSString *questionType;
 
+@property(nonatomic, assign) BOOL statusbarHidden;
+
 @end
 
 @implementation OSFQuestions
@@ -51,6 +53,10 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     self.currentViewController=self.questionLastest;
     
     [self layoutPageViews];
+    
+    
+    //接收child的tableview滚动的消息
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(monitorTable:) name:tableRolling object:nil];
     
 }
 
@@ -187,6 +193,46 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     }];
 }
 
+#pragma mark - status bar style
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return self.statusbarHidden;
+}
+
+#pragma mark -- 监听 表视图的滚动
+-(void)monitorTable:(NSNotification *)noti
+{
+    NSValue *value=noti.object;
+    CGPoint velocity=[value CGPointValue];
+    if (velocity.y>0) {
+        
+        
+        [UIView animateWithDuration:0.15 animations:^{
+            self.navigationController.navigationBarHidden=YES;
+            self.statusbarHidden=YES;
+            
+            [self setNeedsStatusBarAppearanceUpdate];
+        }];
+        
+    }else
+    {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.navigationController.navigationBarHidden=NO;
+            self.statusbarHidden=NO;
+            
+            [self setNeedsStatusBarAppearanceUpdate];
+        }];
+        
+    }
+
+}
+
+
 #pragma mark -- parent
 -(void)initParams
 {
@@ -200,5 +246,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     return self.questionType;
 }
+
+
 
 @end

@@ -10,6 +10,7 @@
 
 NSString * const openDrawer = @"打开抽屉";
 NSString * const user_account = @"我的账户";
+NSString * const tableRolling = @"标示图滚动啦";
 
 NSString * const UserHeadCell = @"userHeadCell";
 NSString * const LabelCell = @"labelCell";

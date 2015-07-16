@@ -30,7 +30,7 @@
 {
     if ([key isEqualToString:@"id"]) {
         
-        self.index=value;
+        self.index=[value longLongValue];
     }
 }
 

@@ -11,7 +11,7 @@
 #pragma mark -- 通知标示符
 extern NSString * const openDrawer;
 extern NSString * const user_account;
-
+extern NSString * const tableRolling;
 
 
 #pragma mark --cell 的标识符
