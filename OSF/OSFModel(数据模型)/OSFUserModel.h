@@ -19,4 +19,6 @@
 @property(nonatomic, copy)NSString *rank;
 ///
 @property(nonatomic, copy)NSString *url;
+
+-(instancetype)initWithDic:(NSDictionary *)dic;
 @end

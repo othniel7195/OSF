@@ -13,4 +13,7 @@
 @property(nonatomic, copy)NSString *createdDate;
 @property(nonatomic, copy)NSString *url;
 @property(nonatomic, strong)OSFUserModel *user;
+
+-(instancetype)initWithDic:(NSDictionary *)dic;
+
 @end

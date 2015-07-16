@@ -13,6 +13,7 @@
 #import "OSFRefreshView.h"
 #import "OSFQuestionLatest.h"
 #import "QuestionLatestHandle.h"
+#import "OSFQuestionModel.h"
 @interface OSFQuestionLatest ()<OTableViewRefreshDelegate,OSFRefreshViewDelegate>
 
 ///自己得刷新类
@@ -40,8 +41,7 @@
     
     self.tableView.tableFooterView=[[UIView alloc] init];
     
-    
-    [self.qLatestHandle startNetWorking];
+    [self stepLastestQuestionNetWork];
 }
 
 -(void)viewDidLayoutSubviews
@@ -59,6 +59,32 @@
 }
 
 #pragma mark -- 网络操作
+
+-(void)stepLastestQuestionNetWork
+{
+    [self.qLatestHandle startNetWorking];
+    
+    __weak typeof(self) weakSelf = self;
+    self.qLatestHandle.successBlock = ^{
+        
+        [OLog showMessage:@"latest ok"];
+        
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.osfRefreshView  o_endRefresh];
+        [weakSelf.osfRefreshView removeFromSuperview];
+    };
+    
+    self.qLatestHandle.failureBlock = ^{
+      
+        [OLog showMessage:@"latest fail"];
+        
+        [weakSelf.osfRefreshView  o_endRefresh];
+    };
+    
+    
+}
+
 -(QuestionLatestHandle *)qLatestHandle
 {
     if (_qLatestHandle==nil) {
@@ -70,8 +96,7 @@
     
     return _qLatestHandle;
 }
-
-#pragma mark --refresh table
+#pragma mark -- first refresh table
 -(OSFRefreshView *)osfRefreshView
 {
     if (!_osfRefreshView) {
@@ -84,6 +109,12 @@
     }
     
     return _osfRefreshView;
+}
+
+-(void)OSFRefreshViewReloadData
+{
+    
+    [self stepLastestQuestionNetWork];
 }
 
 #pragma mark --refresh table
@@ -119,23 +150,26 @@
 #pragma mark  -- table delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 20;
+    return self.qLatestHandle.questionArrs.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:@"0" questionStatus:0 userName:@"赵锋" date:@"一天前" content:@"IOS的问题，天天天天天天天天我不知道如何打开keyboard得开关什么的 导致keyboard打不开，一片底色灰的"];
+    OSFQuestionModel *QModel=[self.qLatestHandle questionWithIndex:indexPath.row];
+    [OLog showMessage:@"qmodel :%@",QModel];
+    UITableViewCell *cell=[OSFCellCollection cellForQuestion:tableView indexPath:indexPath answerNum:QModel.answers questionStatus:0 userName:@"赵锋" date:QModel.createdDate content:QModel.title];
   
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static UITableViewCell *cell = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -145,9 +179,10 @@
     CGFloat height=70.0;
     if([cell respondsToSelector:@selector(calulateHeight:)])
     {
+        OSFQuestionModel *QModel=[self.qLatestHandle questionWithIndex:indexPath.row];
+        
         CGFloat (*action)(id, SEL, NSString*) = (CGFloat (*)(id, SEL, NSString*)) objc_msgSend;
-        height =  action(cell, @selector(calulateHeight:), @"IOS的问题，天天天天天天天天我不知道如何打开keyboard得开关什么的 导致keyboard打不开，一片底色灰的");
-      
+        height =  action(cell, @selector(calulateHeight:), QModel.title);
     }
 
     return height;

@@ -44,4 +44,7 @@
 @property(nonatomic, strong)OSFLastAnswer *lastAnswer;
 @property(nonatomic, strong)NSArray *tags;
 
+///通过字典设置model
+-(instancetype)initWithDic:(NSDictionary *)dic;
+
 @end

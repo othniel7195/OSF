@@ -8,6 +8,14 @@
 
 #import "QuestionLatestHandle.h"
 #import "OLog.h"
+
+@interface QuestionLatestHandle ()
+
+@property(nonatomic, strong, readwrite)OSFPageModel *pageModel;
+@property(nonatomic, strong, readwrite)NSMutableArray *questionArrs;
+
+@end
+
 @implementation QuestionLatestHandle
 
 -(instancetype)init
@@ -17,6 +25,7 @@
     
     _qLatestNet=[[QuestionLatestNet alloc] init];
     _qLatestNet.page=@"1";
+    
     return self;
 }
 
@@ -24,20 +33,73 @@
 {
     [self.qLatestNet startWithCompletionBlockWithSuccess:^(ONetBaseRequest *request) {
         
-        NSDictionary *dic=request.responseJSONObject;
+        NSDictionary *dataDic=[request.responseJSONObject objectForKey:@"data"];
+        NSString *status = [request.responseJSONObject objectForKey:@"status"];
         
-        [OLog showMessage:@"问题最新网络返回数据 :%@",dic];
+        if ([status integerValue]==0) {
+            [OLog showMessage:@"问题请求 成功"];
+            NSDictionary *page =[dataDic objectForKey:@"page"];
+            NSArray *rows =[dataDic objectForKey:@"rows"];
+            
+            self.pageModel=[[OSFPageModel alloc] initWithDic:page];
+            
+            NSMutableArray *mArray = [NSMutableArray array];
+            
+            [rows enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
+                
+                OSFQuestionModel *questionModel = [[OSFQuestionModel alloc] initWithDic:obj];
+                [mArray addObject:questionModel];
+            }];
+            
+            self.questionArrs=[mArray mutableCopy];
+            
+            self.successBlock();
+            [self clearBlock];
+            
+        }else
+        {
+            NSString *msg = [request.responseJSONObject objectForKey:@"message"];
+            [OLog showMessage:@"问题请求 报错 msg :%@",msg];
+            
+            self.failureBlock();
+            [self clearBlock];
+        }
+        
         
     } failure:^(ONetBaseRequest *request) {
         
         NSError *error = [request o_requestError];
         
         [OLog showMessage:@"问题最新 Error :%@",error];
+        self.failureBlock();
+        [self clearBlock];
         
     }];
 }
 -(void)stopNetWorking
 {
     
+}
+
+//把block置为nil
+-(void)clearBlock
+{
+    self.successBlock=nil;
+    self.failureBlock=nil;
+}
+
+#pragma mark -- 数据操作
+-(OSFQuestionModel *)questionWithIndex:(NSInteger)index
+{
+    if (index>self.questionArrs.count) {
+        return nil;
+    }
+    return self.questionArrs[index];
+}
+
+#pragma mark -- delloc
+-(void)dealloc
+{
+    [OLog showMessage:@"qlatest handle 释放了------"];
 }
 @end

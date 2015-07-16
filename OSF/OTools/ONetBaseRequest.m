@@ -83,4 +83,18 @@
 }
 
 
+#pragma mark -- 相应属性
+-(NSInteger)responseStatusCode
+{
+    return self.orequestOpertion.response.statusCode;
+}
+-(NSString *)responseString
+{
+    return self.orequestOpertion.responseString;
+}
+-(id)responseJSONObject
+{
+    return self.orequestOpertion.responseObject;
+}
+
 @end

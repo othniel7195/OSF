@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     if (_questionLastest==nil) {
         OSFQuestionLatest *lastest=[[OSFQuestionLatest alloc] initWithStyle:UITableViewStylePlain];
-        lastest.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-64.0-55.0);
+        lastest.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
         _questionLastest = lastest;
         
         

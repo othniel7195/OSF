@@ -24,7 +24,6 @@
 
 @protocol OSFRefreshViewDelegate <NSObject>
 
-@optional
 -(void)OSFRefreshViewReloadData;
 
 @end

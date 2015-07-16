@@ -1,23 +1,19 @@
 //
-//  OSFTagModel.h
+//  OSFSimilarTagModel.h
 //  OSF
 //
-//  Created by 赵锋 on 15/7/13.
+//  Created by 赵锋 on 15/7/16.
 //  Copyright (c) 2015年 赵锋. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface OSFTagModel : NSObject
+@interface OSFSimilarTagModel : NSObject
+
 ///id
 @property(nonatomic, copy)NSString *index;
-///标签名
+///标签名字
 @property(nonatomic, copy)NSString *name;
-///相似的标签数组
-@property(nonatomic, strong)NSArray *similarTags;
-///标签 url
-@property(nonatomic, copy)NSString *url;
 
 -(instancetype)initWithDic:(NSDictionary *)dic;
-
 @end
