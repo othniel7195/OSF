@@ -141,6 +141,8 @@
 		D556757B1B5696B30012DD1B /* QuestionLatestHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D556757A1B5696B30012DD1B /* QuestionLatestHandle.m */; };
 		D578403F1B5A5B2C00A236A7 /* QuestionNoAnswerNet.m in Sources */ = {isa = PBXBuildFile; fileRef = D578403E1B5A5B2C00A236A7 /* QuestionNoAnswerNet.m */; };
 		D57840421B5A5E5200A236A7 /* QuestionNoAnswerHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D57840411B5A5E5200A236A7 /* QuestionNoAnswerHandle.m */; };
+		D57840451B5A704500A236A7 /* OSFArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D57840441B5A704500A236A7 /* OSFArticleModel.m */; };
+		D57840481B5A90B900A236A7 /* OSFBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = D57840471B5A90B900A236A7 /* OSFBlog.m */; };
 		D5D819371B5153A300FA18F9 /* SKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819321B5153A300FA18F9 /* SKTag.m */; };
 		D5D819381B5153A300FA18F9 /* SKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819341B5153A300FA18F9 /* SKTagButton.m */; };
 		D5D819391B5153A300FA18F9 /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D819361B5153A300FA18F9 /* SKTagView.m */; };
@@ -406,6 +408,10 @@
 		D578403E1B5A5B2C00A236A7 /* QuestionNoAnswerNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionNoAnswerNet.m; sourceTree = "<group>"; };
 		D57840401B5A5E5200A236A7 /* QuestionNoAnswerHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionNoAnswerHandle.h; sourceTree = "<group>"; };
 		D57840411B5A5E5200A236A7 /* QuestionNoAnswerHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionNoAnswerHandle.m; sourceTree = "<group>"; };
+		D57840431B5A704500A236A7 /* OSFArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFArticleModel.h; sourceTree = "<group>"; };
+		D57840441B5A704500A236A7 /* OSFArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFArticleModel.m; sourceTree = "<group>"; };
+		D57840461B5A90B900A236A7 /* OSFBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFBlog.h; sourceTree = "<group>"; };
+		D57840471B5A90B900A236A7 /* OSFBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFBlog.m; sourceTree = "<group>"; };
 		D5D819311B5153A300FA18F9 /* SKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTag.h; sourceTree = "<group>"; };
 		D5D819321B5153A300FA18F9 /* SKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTag.m; sourceTree = "<group>"; };
 		D5D819331B5153A300FA18F9 /* SKTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagButton.h; sourceTree = "<group>"; };
@@ -567,6 +573,10 @@
 				D54D9C631B57752800ACF533 /* OSFPageModel.m */,
 				D54D9C651B578B8100ACF533 /* OSFSimilarTagModel.h */,
 				D54D9C661B578B8100ACF533 /* OSFSimilarTagModel.m */,
+				D57840431B5A704500A236A7 /* OSFArticleModel.h */,
+				D57840441B5A704500A236A7 /* OSFArticleModel.m */,
+				D57840461B5A90B900A236A7 /* OSFBlog.h */,
+				D57840471B5A90B900A236A7 /* OSFBlog.m */,
 			);
 			path = "OSFModel(数据模型)";
 			sourceTree = "<group>";
@@ -1170,6 +1180,7 @@
 			files = (
 				D5DCF4E31B5298A000FAE731 /* OSFUserLoginSuccess.m in Sources */,
 				D53F47EB1B4BCE1600520179 /* OSFLeftViewController.m in Sources */,
+				D57840451B5A704500A236A7 /* OSFArticleModel.m in Sources */,
 				D54644DB1B53C63800F464C2 /* OSFQuestionModel.m in Sources */,
 				D53F47BA1B4BCAA200520179 /* UIProgressView+AFNetworking.m in Sources */,
 				D556757B1B5696B30012DD1B /* QuestionLatestHandle.m in Sources */,
@@ -1215,6 +1226,7 @@
 				D53F477B1B4BCA8200520179 /* AFURLConnectionOperation.m in Sources */,
 				D53F480B1B4BD83600520179 /* OSFUserHeadCell.m in Sources */,
 				D54644D11B5368C200F464C2 /* UIScrollView+MJRefresh.m in Sources */,
+				D57840481B5A90B900A236A7 /* OSFBlog.m in Sources */,
 				D53F479E1B4BCA9800520179 /* MASViewConstraint.m in Sources */,
 				D53F47FD1B4BD05A00520179 /* OSFCellCollection.m in Sources */,
 				D5D819451B517C0400FA18F9 /* OSFTextFieldCell.m in Sources */,
