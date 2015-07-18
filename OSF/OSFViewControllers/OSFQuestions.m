@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     if (_questionLastest==nil) {
         OSFQuestionLatest *lastest=[[OSFQuestionLatest alloc] initWithStyle:UITableViewStylePlain];
-        lastest.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
+        lastest.view.frame=CGRectMake(0, 55.0, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
         _questionLastest = lastest;
         
         
@@ -104,7 +104,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     if (_questionHot==nil) {
         OSFQuestionHot *hot=[[OSFQuestionHot alloc] init];
-        hot.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-64.0-55.0);
+        hot.view.frame=CGRectMake(0, 55.0, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
         _questionHot=hot;
         
         
@@ -117,7 +117,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     if (_questionNoAnswer==nil) {
         OSFQuestionNoAnswer *answer=[[OSFQuestionNoAnswer alloc] init];
-        answer.view.frame=CGRectMake(0, 55, self.view.bounds.size.width, self.view.bounds.size.height-64.0-64.0);
+        answer.view.frame=CGRectMake(0, 55.0, self.view.bounds.size.width, self.view.bounds.size.height-55.0);
         _questionNoAnswer=answer;
         
         
@@ -207,9 +207,11 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 #pragma mark -- 监听 表视图的滚动
 -(void)monitorTable:(NSNotification *)noti
 {
+   
     NSValue *value=noti.object;
     CGPoint velocity=[value CGPointValue];
     if (velocity.y>0) {
+        
         
         
         [UIView animateWithDuration:0.15 animations:^{
@@ -217,6 +219,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
             self.statusbarHidden=YES;
             
             [self setNeedsStatusBarAppearanceUpdate];
+            
         }];
         
     }else
