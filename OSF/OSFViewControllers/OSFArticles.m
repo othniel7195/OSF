@@ -10,6 +10,10 @@
 #import "OSFCellCollection.h"
 #import <objc/message.h>
 #import "OTableViewRefresh.h"
+#import "OSFRefreshView.h"
+#import "ArticleHandle.h"
+#import "OSFArticleModel.h"
+#import "OTypes.h"
 @interface OSFArticles ()<UITableViewDataSource,UITableViewDelegate,OTableViewRefreshDelegate>
 @property(nonatomic, strong)UITableView *articlesList;
 @property(nonatomic, strong)OTableViewRefresh *orefreshControl;
