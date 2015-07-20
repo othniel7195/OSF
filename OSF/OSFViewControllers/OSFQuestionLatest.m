@@ -246,6 +246,12 @@
 {
     return 70.0;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OSFQuestionModel *QModel=[self.qLatestHandle questionWithIndex:indexPath.row];
+    [OLog showMessage:@"qid:%ld",QModel.index];
+    
+}
 
 #pragma mark --delloc
 -(void)dealloc

@@ -41,7 +41,7 @@
     
     self.tableView.tableFooterView=[[UIView alloc] init];
     
-    [self stepLastestQuestionNetWork:ONetWorkFirst];
+    [self stepNoAnswerQuestionNetWork:ONetWorkFirst];
 
     
 }
@@ -62,7 +62,7 @@
 
 #pragma mark -- 网络操作
 
--(void)stepLastestQuestionNetWork:(ONetWorkState)networkState
+-(void)stepNoAnswerQuestionNetWork:(ONetWorkState)networkState
 {
     
     [self.qNoAnswerHandle startNetWorking];
@@ -147,7 +147,7 @@
 -(void)OSFRefreshViewReloadData
 {
     
-    [self stepLastestQuestionNetWork:ONetWorkFirst];
+    [self stepNoAnswerQuestionNetWork:ONetWorkFirst];
 }
 
 
@@ -166,12 +166,12 @@
 {
     
     self.qNoAnswerHandle.qNoAnswerNet.page=@"1";
-    [self stepLastestQuestionNetWork:ONetWorkTopPull];
+    [self stepNoAnswerQuestionNetWork:ONetWorkTopPull];
 }
 -(void)o_loadMoreData
 {
     self.qNoAnswerHandle.qNoAnswerNet.page=[NSString stringWithFormat:@"%ld",self.qNoAnswerHandle.pageModel.next];
-    [self stepLastestQuestionNetWork:ONetWorkBottomPull];
+    [self stepNoAnswerQuestionNetWork:ONetWorkBottomPull];
 }
 
 #pragma mark - Table view data source

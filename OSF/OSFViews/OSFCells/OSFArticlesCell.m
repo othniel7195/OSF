@@ -9,6 +9,7 @@
 #import "OSFArticlesCell.h"
 #import "OSFPraiseView.h"
 #import "OColors.h"
+#import "UIImageView+AFNetworking.h"
 @interface OSFArticlesCell ()
 
 ///文章标题的label
@@ -206,6 +207,7 @@
     if (_imgURL!=imgURL) {
         _imgURL=imgURL;
         
+        [self.headImageView setImageWithURL:[NSURL URLWithString:_imgURL] placeholderImage:[UIImage imageNamed:@"user_avatar"]];
         
     }
 }

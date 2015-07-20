@@ -108,6 +108,7 @@
 #pragma mark -- delloc
 -(void)dealloc
 {
+    [self stopNetWorking];
     [OLog showMessage:@"qlatest handle 释放了------"];
 }
 @end

@@ -100,5 +100,9 @@
     return self.questionArrs[index];
 }
 
+-(void)dealloc
+{
+    [self stopNetWorking];
+}
 
 @end

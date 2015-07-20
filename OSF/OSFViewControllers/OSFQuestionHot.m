@@ -42,7 +42,7 @@
     
     self.tableView.tableFooterView=[[UIView alloc] init];
     
-    [self stepLastestQuestionNetWork:ONetWorkFirst];
+    [self stepHotQuestionNetWork:ONetWorkFirst];
     
 }
 
@@ -63,7 +63,7 @@
 
 #pragma mark -- 网络操作
 
--(void)stepLastestQuestionNetWork:(ONetWorkState)networkState
+-(void)stepHotQuestionNetWork:(ONetWorkState)networkState
 {
     
     [self.qHotHandle startNetWorking];
@@ -149,7 +149,7 @@
 -(void)OSFRefreshViewReloadData
 {
     
-    [self stepLastestQuestionNetWork:ONetWorkFirst];
+    [self stepHotQuestionNetWork:ONetWorkFirst];
 }
 
 #pragma mark --refresh table
@@ -167,12 +167,12 @@
 {
     
     self.qHotHandle.qHotNet.page=@"1";
-    [self stepLastestQuestionNetWork:ONetWorkTopPull];
+    [self stepHotQuestionNetWork:ONetWorkTopPull];
 }
 -(void)o_loadMoreData
 {
     self.qHotHandle.qHotNet.page=[NSString stringWithFormat:@"%ld",self.qHotHandle.pageModel.next];
-    [self stepLastestQuestionNetWork:ONetWorkBottomPull];
+    [self stepHotQuestionNetWork:ONetWorkBottomPull];
 }
 
 #pragma mark -- table delegate
