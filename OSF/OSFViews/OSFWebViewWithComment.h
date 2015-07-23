@@ -10,4 +10,6 @@
 
 @interface OSFWebViewWithComment : OSFBaseView
 
+@property(nonatomic, copy) NSString *htmlString;
+
 @end
