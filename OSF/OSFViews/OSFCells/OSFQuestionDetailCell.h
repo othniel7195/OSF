@@ -10,4 +10,7 @@
 
 @interface OSFQuestionDetailCell : OSFBaseCell
 
+
+-(void)osfQuestionTitle:(NSString *)title  name:(NSString *)name time:(NSString *)time;
+-(void)osfQuestionHtmlString:(NSString *)htmlString tags:(NSArray *)tags;
 @end

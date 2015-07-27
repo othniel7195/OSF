@@ -18,5 +18,6 @@ NSString * const QuestionCell = @"questionCell";
 NSString * const ArticleCell = @"articleCell";
 NSString * const TagCell =@"tagCell";
 NSString * const TextFieldCell=@"textFieldCell";
+NSString * const QuestionDetailCell=@"questionDetailCell";
 
 NSString * const cellStatus=@"cellStatus";

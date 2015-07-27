@@ -34,6 +34,10 @@
 {
     [tableView registerClass:[OSFTextFieldCell class] forCellReuseIdentifier:TextFieldCell];
 }
++(void)registerQuestionDetailCell:(UITableView *)tableView
+{
+    [tableView registerClass:[OSFQuestionDetailCell class] forCellReuseIdentifier:QuestionDetailCell];
+}
 #pragma mark -- 生成并复用cell
 +(UITableViewCell *)cellForUserHead:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath headImage:(UIImage *)headImage userName:(NSString *)userName
 {
@@ -107,6 +111,14 @@
     cell.textFieldType=textFieldType;
     cell.returnType=returnType;
     
+    return cell;
+}
++(UITableViewCell *)cellForQuestionDetail:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath title:(NSString *) title userName:(NSString *)userName time:(NSString *)time htmlString:(NSString *)htmlString
+                                     tags:(NSArray *)tags
+{
+    OSFQuestionDetailCell *cell=[tableView dequeueReusableCellWithIdentifier:QuestionDetailCell forIndexPath:indexPath];
+    [cell osfQuestionTitle:title name:userName time:time];
+    [cell osfQuestionHtmlString:htmlString tags:tags];
     return cell;
 }
 @end

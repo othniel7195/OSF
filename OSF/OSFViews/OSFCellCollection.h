@@ -14,6 +14,7 @@
 #import "OSFArticlesCell.h"
 #import "OSFTagsCell.h"
 #import "OSFTextFieldCell.h"
+#import "OSFQuestionDetailCell.h"
 #import "Okeys.h"
 @interface OSFCellCollection : NSObject
 
@@ -76,6 +77,11 @@
  */
 +(UITableViewCell *)cellForTextField:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath delegate:(id) delegate placeholder:(NSString *)placeholder  textFieldType:(NSInteger) textFieldType returnType:(NSInteger)returnType;
 
+///注册 问题详情cell
++(void)registerQuestionDetailCell:(UITableView *)tableView;
+///
++(UITableViewCell *)cellForQuestionDetail:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath title:(NSString *) title userName:(NSString *)userName time:(NSString *)time htmlString:(NSString *)htmlString
+                                     tags:(NSArray *)tags;
 
 
 @end

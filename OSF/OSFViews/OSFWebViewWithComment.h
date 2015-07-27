@@ -11,5 +11,11 @@
 @interface OSFWebViewWithComment : OSFBaseView
 
 @property(nonatomic, copy) NSString *htmlString;
-
+@property(nonatomic, assign) BOOL hasTags;
+@property(nonatomic, strong)NSArray *tags;
+-(instancetype)initWithFrame:(CGRect)frame hasTags:(BOOL)hasTags;
+/**
+ * tags 标签数组
+ */
+-(CGFloat)calulateHeightWithTags:(NSArray *)tags;
 @end
