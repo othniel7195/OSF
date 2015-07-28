@@ -47,12 +47,15 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[OSFCellCollection cellForQuestionDetail:tableView indexPath:indexPath title:@"IOS 中那些运动类的APP，如何实现在View中实时显示当前的速度和运动的距离的呢? 如何刷新界面" userName:@"赵锋" time:@"一天前" htmlString:@"" tags:@[@"iOS",@"view",@"刷新",@"objective-c"]];
-    return nil;
+    UITableViewCell *cell=[OSFCellCollection cellForQuestionDetail:tableView indexPath:indexPath title:@"IOS 中那些运动类的APP，如何实现在View中实时显示当前的速度和运动的距离的呢? 如何刷新界面" userName:@"赵锋" time:@"一天前" htmlString:@"<p>感觉写的都一样啊，很奇怪？<br><img src=\"/img/bVmRRs\" alt=\"图片描述\"></p><p><img src=\"/img/bVmRRv\" alt=\"图片描述\"><br><img src=\"/img/bVmRRx\" alt=\"图片描述\"></p>" tags:@[@"iOS",@"view",@"刷新",@"objective-c"]];
+    return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
 @end

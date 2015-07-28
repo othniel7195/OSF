@@ -11,6 +11,7 @@
 NSString * const openDrawer = @"打开抽屉";
 NSString * const user_account = @"我的账户";
 NSString * const tableRolling = @"标示图滚动啦";
+NSString * const questionCellSelected = @"问题被选中";
 
 NSString * const UserHeadCell = @"userHeadCell";
 NSString * const LabelCell = @"labelCell";

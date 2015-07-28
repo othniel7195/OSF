@@ -12,17 +12,18 @@
 extern NSString * const openDrawer;
 extern NSString * const user_account;
 extern NSString * const tableRolling;
+extern NSString * const questionCellSelected;
 
 
 #pragma mark --cell 的标识符
-extern NSString *const UserHeadCell;
-extern NSString *const LabelCell;
-extern NSString *const QuestionCell;
-extern NSString *const ArticleCell;
-extern NSString *const TagCell;
-extern NSString *const TextFieldCell;
-extern NSString *const QuestionDetailCell;
+extern NSString * const UserHeadCell;
+extern NSString * const LabelCell;
+extern NSString * const QuestionCell;
+extern NSString * const ArticleCell;
+extern NSString * const TagCell;
+extern NSString * const TextFieldCell;
+extern NSString * const QuestionDetailCell;
 
 
 #pragma mark -- cell 状态
-extern NSString *const cellStatus;
+extern NSString * const cellStatus;

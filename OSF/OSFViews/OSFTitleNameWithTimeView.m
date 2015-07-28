@@ -79,7 +79,7 @@
     NSString *nameWithTime=[NSString stringWithFormat:@"%@ · %@",name,time];
     NSMutableAttributedString *nameWithTimeAttr=[[NSMutableAttributedString alloc] initWithString:nameWithTime];
     [nameWithTimeAttr addAttribute:NSForegroundColorAttributeName value:[OColors OSFNavBarColor] range:NSMakeRange(0, name.length)];
-    [nameWithTimeAttr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(name.length, nameWithTime.length)];
+    [nameWithTimeAttr addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(name.length, nameWithTime.length-name.length)];
     
     self.nameWithTimeLabel.attributedText=nameWithTimeAttr;
 }

@@ -236,5 +236,10 @@
 {
     return 70.0;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OSFQuestionModel *QModel=[self.qNoAnswerHandle questionWithIndex:indexPath.row];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:questionCellSelected object:[NSNumber numberWithLongLong:QModel.index]];
+}
 @end

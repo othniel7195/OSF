@@ -249,7 +249,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OSFQuestionModel *QModel=[self.qLatestHandle questionWithIndex:indexPath.row];
-    [OLog showMessage:@"qid:%ld",QModel.index];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:questionCellSelected object:[NSNumber numberWithLongLong:QModel.index]];
     
 }
 

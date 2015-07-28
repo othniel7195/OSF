@@ -9,6 +9,7 @@
 #import "OSFWebViewWithComment.h"
 #import "SKTagView.h"
 #import "OLog.h"
+#import "OSFHtmlParse.h"
 @interface OSFWebViewWithComment ()<UIWebViewDelegate>
 
 @property(nonatomic, strong)UIWebView *detailWebView;
@@ -86,11 +87,9 @@
     if (_detailWebView==nil) {
         
         UIWebView *webView=[[UIWebView alloc] init];
-        [webView loadHTMLString:self.htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
         webView.delegate=self;
         webView.opaque=NO;
-        
-        
+        [webView sizeToFit];
         
         _detailWebView=webView;
     }
@@ -126,6 +125,12 @@
     
     return _tagView;
 }
+-(void)setHtmlString:(NSString *)htmlString
+{
+    _htmlString=htmlString;
+    
+    [self.detailWebView loadHTMLString:[[OSFHtmlParse sharedHtmlParse] formatHTMLFromMarkdown:_htmlString] baseURL:[[NSBundle mainBundle] bundleURL]];
+}
 #pragma mark -- tags
 -(CGFloat)calulateHeightWithTags:(NSArray *)tags
 {
@@ -147,12 +152,15 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     
-    CGSize newSize=[[change objectForKey:@"NSKeyValueChangeNewKey"] CGSizeValue];
-    CGSize oldSize=[[change objectForKey:@"NSKeyValueChangeOldKey"] CGSizeValue];
+    UIScrollView *sv=object;
     
-    [OLog showMessage:@"newSize:%@  oldSize:%@",newSize,oldSize];
+    [OLog showMessage:@"newSize:%@ ",NSStringFromCGSize(sv.contentSize)];
     
     
+}
+-(void)dealloc
+{
+    [self.detailWebView.scrollView removeObserver:self forKeyPath:@"contentSize" context:nil];
 }
 
 @end

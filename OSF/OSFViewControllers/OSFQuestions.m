@@ -13,6 +13,7 @@
 #import "Masonry.h"
 #import "OColors.h"
 #import "Okeys.h"
+#import "OSFQuestionDetail.h"
 typedef NS_ENUM(NSInteger, ViewControllerType)
 {
     OSFQLastest, // 最新
@@ -36,6 +37,8 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 
 @property(nonatomic, assign) BOOL statusbarHidden;
 
+@property(nonatomic, strong)OSFQuestionDetail *questionDetail;
+
 @end
 
 @implementation OSFQuestions
@@ -58,6 +61,8 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     //接收child的tableview滚动的消息
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(monitorTable:) name:tableRolling object:nil];
     
+    //跳转问题详情
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jumpToDetail:) name:questionCellSelected object:nil];
 }
 
 
@@ -234,7 +239,13 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     }
 
 }
-
+#pragma mark -- 监听 cell 被选中
+-(void)jumpToDetail:(NSNotification *)noti
+{
+    OSFQuestionDetail *qd=[[OSFQuestionDetail alloc] init];
+    
+    [self.navigationController pushViewController:qd animated:YES];
+}
 
 #pragma mark -- parent
 -(void)initParams
@@ -254,6 +265,7 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:tableRolling object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:questionCellSelected object:nil];
 }
 
 
