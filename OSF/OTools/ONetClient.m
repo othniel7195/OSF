@@ -75,7 +75,7 @@
         //get
        request.orequestOpertion = [self.manager GET:[self buildRequestUrl:request] parameters:[self buildRequestParams:request] success:^(AFHTTPRequestOperation * operation, id responseObject) {
            
-           [OLog showMessage:@"请求成功"];
+           [OLog showMessage:@"请求成功 "];
            [self handleRequestResult:operation];
            
         } failure:^(AFHTTPRequestOperation * operation, NSError * error) {

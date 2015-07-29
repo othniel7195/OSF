@@ -34,11 +34,13 @@
 {
     [self.qLatestNet startWithCompletionBlockWithSuccess:^(ONetBaseRequest *request) {
         
+        [OLog showMessage:@"问题请求 成功 :%@",request];
+        
         NSDictionary *dataDic=[request.responseJSONObject objectForKey:@"data"];
         NSString *status = [request.responseJSONObject objectForKey:@"status"];
         
         if ([status integerValue]==0) {
-            [OLog showMessage:@"问题请求 成功"];
+            
             NSDictionary *page =[dataDic objectForKey:@"page"];
             NSArray *rows =[dataDic objectForKey:@"rows"];
             

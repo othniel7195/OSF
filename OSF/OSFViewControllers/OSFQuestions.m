@@ -51,8 +51,6 @@ typedef NS_ENUM(NSInteger, ViewControllerType)
     self.automaticallyAdjustsScrollViewInsets=NO;
     
     [self addChildViewController:self.questionLastest];
-    [self addChildViewController:self.questionHot];
-    [self addChildViewController:self.questionNoAnswer];
     self.currentViewController=self.questionLastest;
     
     [self layoutPageViews];

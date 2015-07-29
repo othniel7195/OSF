@@ -174,6 +174,10 @@
 		D5DCF4E91B52B10100FAE731 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DCF4E81B52B10100FAE731 /* UIImage+ImageWithColor.m */; };
 		D5DD20BD1B4EB65F007C79E4 /* OSFPraiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */; };
 		D5DD20BF1B4EC3CC007C79E4 /* user_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DD20BE1B4EC3CC007C79E4 /* user_avatar@2x.png */; };
+		D5DE699D1B6926CB000FFBB4 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = D5DE699C1B6926CB000FFBB4 /* highlight.min.js */; };
+		D5DE69A11B6926E4000FFBB4 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D5DE699E1B6926E4000FFBB4 /* about.html */; };
+		D5DE69A21B6926E4000FFBB4 /* default.min.css in Resources */ = {isa = PBXBuildFile; fileRef = D5DE699F1B6926E4000FFBB4 /* default.min.css */; };
+		D5DE69A31B6926E4000FFBB4 /* global.css in Resources */ = {isa = PBXBuildFile; fileRef = D5DE69A01B6926E4000FFBB4 /* global.css */; };
 		D5EDDF921B4D13C0005A072D /* OSFQuestionLatest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */; };
 /* End PBXBuildFile section */
 
@@ -490,6 +494,10 @@
 		D5DD20BB1B4EB65F007C79E4 /* OSFPraiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFPraiseView.h; sourceTree = "<group>"; };
 		D5DD20BC1B4EB65F007C79E4 /* OSFPraiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFPraiseView.m; sourceTree = "<group>"; };
 		D5DD20BE1B4EC3CC007C79E4 /* user_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_avatar@2x.png"; sourceTree = "<group>"; };
+		D5DE699C1B6926CB000FFBB4 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
+		D5DE699E1B6926E4000FFBB4 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		D5DE699F1B6926E4000FFBB4 /* default.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.min.css; sourceTree = "<group>"; };
+		D5DE69A01B6926E4000FFBB4 /* global.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = global.css; sourceTree = "<group>"; };
 		D5EDDF901B4D13C0005A072D /* OSFQuestionLatest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFQuestionLatest.h; sourceTree = "<group>"; };
 		D5EDDF911B4D13C0005A072D /* OSFQuestionLatest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFQuestionLatest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -554,6 +562,10 @@
 		D53F472F1B4BC89800520179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D5DE699E1B6926E4000FFBB4 /* about.html */,
+				D5DE699F1B6926E4000FFBB4 /* default.min.css */,
+				D5DE69A01B6926E4000FFBB4 /* global.css */,
+				D5DE699C1B6926CB000FFBB4 /* highlight.min.js */,
 				D5D73A3A1B67CC9100C860A6 /* template.html */,
 				D53F47301B4BC89800520179 /* Info.plist */,
 				D53F47311B4BC89800520179 /* main.m */,
@@ -1227,6 +1239,7 @@
 				D53F482C1B4BDC9D00520179 /* link.png in Resources */,
 				D53F48601B4BDFA300520179 /* icon_up_count_big@2x.png in Resources */,
 				D53F48301B4BDC9D00520179 /* title.png in Resources */,
+				D5DE69A11B6926E4000FFBB4 /* about.html in Resources */,
 				D53F48261B4BDC9D00520179 /* bold.png in Resources */,
 				D53F48401B4BDF4800520179 /* icon_tab_discover@2x.png in Resources */,
 				D53F485B1B4BDF9800520179 /* icon_tab_wenda_active@3x.png in Resources */,
@@ -1247,11 +1260,14 @@
 				D53F48471B4BDF5600520179 /* icon_tab_qa_active@3x.png in Resources */,
 				D53F48451B4BDF5600520179 /* icon_tab_qa_active.png in Resources */,
 				D53F48411B4BDF4800520179 /* icon_tab_discover@3x.png in Resources */,
+				D5DE69A21B6926E4000FFBB4 /* default.min.css in Resources */,
 				D53F485A1B4BDF9800520179 /* icon_tab_wenda_active@2x.png in Resources */,
 				D53F48461B4BDF5600520179 /* icon_tab_qa_active@2x.png in Resources */,
 				D53F48311B4BDC9D00520179 /* ul.png in Resources */,
+				D5DE699D1B6926CB000FFBB4 /* highlight.min.js in Resources */,
 				D53F48351B4BDF2600520179 /* icon_menu@2x.png in Resources */,
 				D53F47FF1B4BD1D400520179 /* APIURL.rtf in Resources */,
+				D5DE69A31B6926E4000FFBB4 /* global.css in Resources */,
 				D53F47401B4BC89800520179 /* Images.xcassets in Resources */,
 				D53F48341B4BDF2600520179 /* icon_menu.png in Resources */,
 				D53F48551B4BDF7300520179 /* icon_tab_search@3x.png in Resources */,

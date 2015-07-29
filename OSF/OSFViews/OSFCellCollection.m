@@ -119,6 +119,8 @@
     OSFQuestionDetailCell *cell=[tableView dequeueReusableCellWithIdentifier:QuestionDetailCell forIndexPath:indexPath];
     [cell osfQuestionTitle:title name:userName time:time];
     [cell osfQuestionHtmlString:htmlString tags:tags];
+    [cell needsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     return cell;
 }
 @end

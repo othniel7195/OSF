@@ -22,30 +22,31 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        [self addSubview:self.titleWithTime];
-        [self addSubview:self.webComment];
         
-        [self initConstraints];
     }
     return self;
 }
 
-
--(void)initConstraints
+-(void)updateConstraints
 {
-    [self.titleWithTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(5);
-        make.width.mas_equalTo(self.contentView);
-        make.left.mas_equalTo(self.contentView);
+    NSLog(@"detail cell");
+    
+//    [self.titleWithTime mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(5);
+//        make.width.mas_equalTo(self.contentView.bounds.size.width);
+//        make.left.mas_equalTo(0);
+//        make.height.mas_greaterThanOrEqualTo(40);
+//    }];
+    [self.webComment mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.width.mas_equalTo(self.contentView.bounds.size.width);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(5);
     }];
     
-    [self.webComment mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleWithTime).offset(5);
-        make.width.mas_equalTo(self.contentView);
-        make.left.mas_equalTo(self.contentView);
-    }];
+    [super updateConstraints];
     
 }
+
 
 #pragma mark --- 视图
 -(OSFTitleNameWithTimeView *)titleWithTime
@@ -55,15 +56,21 @@
         OSFTitleNameWithTimeView *title_time=[[OSFTitleNameWithTimeView alloc] init];
         
         _titleWithTime=title_time;
+        [self.contentView addSubview:_titleWithTime];
     }
     return _titleWithTime;
 }
 -(OSFWebViewWithComment*)webComment
 {
     if (!_webComment) {
-        OSFWebViewWithComment *web_commnet=[[OSFWebViewWithComment alloc] initWithFrame:CGRectZero hasTags:YES];
+        OSFWebViewWithComment *web_commnet=[[OSFWebViewWithComment alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 1) hasTags:YES];
+        web_commnet.backgroundColor=[UIColor redColor];
         
         _webComment=web_commnet;
+        
+        [self.contentView addSubview:_webComment];
+        
+        [_webComment needsUpdateConstraints];
     }
     return _webComment;
 }

@@ -16,7 +16,6 @@
 @property(nonatomic, strong)UIButton *commentBtn;
 @property(nonatomic, strong)SKTagView *tagView;
 @property(nonatomic, strong)MASConstraint *webHeight;
-
 @end
 
 @implementation OSFWebViewWithComment
@@ -28,55 +27,69 @@
         
         _hasTags=hasTags;
         self.backgroundColor=[UIColor whiteColor];
-        [self addSubview:self.detailWebView];
-        if (_hasTags) {
-            [self addSubview:self.tagView];
-        }
-        [self addSubview:self.commentBtn];
+//        if (_hasTags) {
+//            [self addSubview:self.tagView];
+//        }
+//        [self addSubview:self.commentBtn];
         
-        [self initConstraints];
+       // [self initConstraints];
         
         //
-        [self.detailWebView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+        
         
     }
     return self;
 }
 
+-(void)updateConstraints
+{
+    NSLog(@"webView :%@ %@  %@",NSStringFromCGRect(self.bounds),NSStringFromCGRect(self.detailWebView.bounds),self.detailWebView.subviews[0]);
+
+    [self.detailWebView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self).offset(5);
+        make.width.mas_equalTo(self.bounds.size.width);
+        make.centerX.mas_equalTo(self);
+        self.webHeight = make.height.mas_equalTo(1);
+    }];
+ 
+    [super updateConstraints];
+}
+
 -(void)initConstraints
 {
-    
-    [self.detailWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.top.mas_equalTo(5);
-        make.right.mas_equalTo(self).offset(-10);
-       self.webHeight = make.height.mas_equalTo(20);
-    }];
-    if (self.hasTags) {
-        [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
-            make.left.mas_equalTo(10);
-            make.right.mas_equalTo(self).offset(-10);
-            make.height.mas_greaterThanOrEqualTo(20);
-        }];
-        [self.commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.tagView.mas_bottom).offset(10);
-            make.right.mas_equalTo(self).offset(-10);
-            make.width.mas_equalTo(60);
-            make.height.mas_equalTo(30);
-            make.bottom.mas_equalTo(self).offset(-10);
-        }];
-    }
-    else{
-        [self.commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
-            make.right.mas_equalTo(self).offset(-10);
-            make.width.mas_equalTo(60);
-            make.height.mas_equalTo(30);
-            make.bottom.mas_equalTo(self).offset(-10);
-        }];
-        
-    }
+//    NSLog(@"webcon :%f",self.bounds.size.width);
+//    
+//    [self.detailWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.mas_top).offset(5);
+//        make.width.mas_equalTo(self.bounds.size.width);
+//   
+//       self.webHeight = make.height.mas_equalTo(0);
+//    }];
+//    if (self.hasTags) {
+//        [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
+//            make.left.mas_equalTo(self.detailWebView);
+//            make.right.mas_equalTo(self).offset(-10);
+//            make.height.mas_greaterThanOrEqualTo(20);
+//        }];
+//        [self.commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(self.tagView.mas_bottom).offset(10);
+//            make.right.mas_equalTo(self).offset(-10);
+//            make.width.mas_equalTo(60);
+//            make.height.mas_equalTo(30);
+//            make.bottom.mas_equalTo(self).offset(-10);
+//        }];
+//    }
+//    else{
+//        [self.commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
+//            make.right.mas_equalTo(self).offset(-10);
+//            make.width.mas_equalTo(60);
+//            make.height.mas_equalTo(30);
+//            make.bottom.mas_equalTo(self).offset(-10);
+//        }];
+//        
+//    }
     
     
 }
@@ -86,12 +99,20 @@
 {
     if (_detailWebView==nil) {
         
-        UIWebView *webView=[[UIWebView alloc] init];
+        UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 5, self.bounds.size.width, 1)];
         webView.delegate=self;
-        webView.opaque=NO;
-        [webView sizeToFit];
+        webView.opaque = NO;
+        webView.multipleTouchEnabled = NO;
+        webView.backgroundColor=[UIColor yellowColor];
+        webView.scrollView.bounces=NO;
+        webView.scalesPageToFit=NO;
+        webView.contentMode=UIViewContentModeCenter;
+        webView.scrollView.showsHorizontalScrollIndicator=NO;
+        webView.scrollView.showsVerticalScrollIndicator=NO;
         
         _detailWebView=webView;
+        [self addSubview:_detailWebView];
+        [_detailWebView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     }
     
     return _detailWebView;
@@ -130,6 +151,7 @@
     _htmlString=htmlString;
     
     [self.detailWebView loadHTMLString:[[OSFHtmlParse sharedHtmlParse] formatHTMLFromMarkdown:_htmlString] baseURL:[[NSBundle mainBundle] bundleURL]];
+    
 }
 #pragma mark -- tags
 -(CGFloat)calulateHeightWithTags:(NSArray *)tags
@@ -155,6 +177,7 @@
     UIScrollView *sv=object;
     
     [OLog showMessage:@"newSize:%@ ",NSStringFromCGSize(sv.contentSize)];
+    self.webHeight.mas_equalTo(sv.contentSize.height);
     
     
 }
