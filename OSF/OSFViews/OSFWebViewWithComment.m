@@ -10,6 +10,8 @@
 #import "SKTagView.h"
 #import "OLog.h"
 #import "OSFHtmlParse.h"
+#import "OColors.h"
+#import "OLog.h"
 @interface OSFWebViewWithComment ()<UIWebViewDelegate>
 
 @property(nonatomic, strong)UIWebView *detailWebView;
@@ -27,15 +29,11 @@
         
         _hasTags=hasTags;
         self.backgroundColor=[UIColor whiteColor];
-//        if (_hasTags) {
-//            [self addSubview:self.tagView];
-//        }
-//        [self addSubview:self.commentBtn];
-        
-       // [self initConstraints];
-        
-        //
-        
+        if (_hasTags) {
+            [self addSubview:self.tagView];
+        }
+        [self addSubview:self.commentBtn];
+    
         
     }
     return self;
@@ -43,55 +41,42 @@
 
 -(void)updateConstraints
 {
-    NSLog(@"webView :%@ %@  %@",NSStringFromCGRect(self.bounds),NSStringFromCGRect(self.detailWebView.bounds),self.detailWebView.subviews[0]);
-
+    
     [self.detailWebView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self).offset(5);
         make.width.mas_equalTo(self.bounds.size.width);
         make.centerX.mas_equalTo(self);
         self.webHeight = make.height.mas_equalTo(1);
     }];
+    
+    if (self.hasTags) {
+        [self.tagView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
+            make.left.mas_equalTo(self).offset(10);
+            make.right.mas_equalTo(self).offset(-10);
+            make.height.mas_greaterThanOrEqualTo(20);
+        }];
+        [self.commentBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.tagView.mas_bottom).offset(10);
+            make.right.mas_equalTo(self).offset(-10);
+            make.width.mas_equalTo(60);
+            make.height.mas_equalTo(30);
+            make.bottom.mas_equalTo(self).offset(-10);
+        }];
+    }
+    else{
+        [self.commentBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
+            make.right.mas_equalTo(self).offset(-10);
+            make.width.mas_equalTo(60);
+            make.height.mas_equalTo(30);
+            make.bottom.mas_equalTo(self).offset(-10);
+        }];
+        
+    }
+
  
     [super updateConstraints];
-}
-
--(void)initConstraints
-{
-//    NSLog(@"webcon :%f",self.bounds.size.width);
-//    
-//    [self.detailWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(self.mas_top).offset(5);
-//        make.width.mas_equalTo(self.bounds.size.width);
-//   
-//       self.webHeight = make.height.mas_equalTo(0);
-//    }];
-//    if (self.hasTags) {
-//        [self.tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
-//            make.left.mas_equalTo(self.detailWebView);
-//            make.right.mas_equalTo(self).offset(-10);
-//            make.height.mas_greaterThanOrEqualTo(20);
-//        }];
-//        [self.commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(self.tagView.mas_bottom).offset(10);
-//            make.right.mas_equalTo(self).offset(-10);
-//            make.width.mas_equalTo(60);
-//            make.height.mas_equalTo(30);
-//            make.bottom.mas_equalTo(self).offset(-10);
-//        }];
-//    }
-//    else{
-//        [self.commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(self.detailWebView.mas_bottom).offset(10);
-//            make.right.mas_equalTo(self).offset(-10);
-//            make.width.mas_equalTo(60);
-//            make.height.mas_equalTo(30);
-//            make.bottom.mas_equalTo(self).offset(-10);
-//        }];
-//        
-//    }
-    
-    
 }
 
 
@@ -136,7 +121,7 @@
 -(SKTagView *)tagView
 {
     if (!_tagView) {
-        SKTagView *tv=[[SKTagView alloc] initWithFrame:CGRectZero];
+        SKTagView *tv=[[SKTagView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width-20, 20)];
         tv.preferredMaxLayoutWidth=[UIScreen mainScreen].bounds.size.width-20;
         tv.padding= UIEdgeInsetsMake(2, 2, 2, 2);
         tv.insets= 5;
@@ -162,12 +147,35 @@
 #pragma mark -- webView delegate
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
+  
 }
 
 #pragma mark -- action
 -(void)commentDone
 {
     
+}
+
+-(void)setTags:(NSArray *)tags
+{
+    if (_tags!=tags) {
+        _tags=tags;
+        
+        [self.tagView removeAllTags];
+        [OLog showMessage:@"web comment  -- %@",_tags];
+        [_tags enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            SKTag *tag = [SKTag tagWithText:obj];
+            tag.textColor = [UIColor whiteColor];
+            tag.fontSize = 12;
+            tag.padding = UIEdgeInsetsMake(2, 2, 2, 2);
+            tag.bgColor = [OColors OSFRandomColor];
+            tag.cornerRadius = 4;
+            tag.enable = YES;
+            
+            [self.tagView addTag:tag];
+        }];
+    }
 }
 
 #pragma mark --kvo
@@ -178,7 +186,6 @@
     
     [OLog showMessage:@"newSize:%@ ",NSStringFromCGSize(sv.contentSize)];
     self.webHeight.mas_equalTo(sv.contentSize.height);
-    
     
 }
 -(void)dealloc

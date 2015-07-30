@@ -1,0 +1,17 @@
+<div class="commit-item" data-id="###comment_id###" data-user="###user###" data-userid="###user_id###">
+  <div class="commit-avatar">
+    <img src="###avatar_url###" alt="" class="avatar">
+  </div>
+  <div class="commit-content">
+    <div class="commit-header">
+      <span class="index">###comment_index###</span>
+      <span class="username"><strong>###user###</strong></span>
+      <span class="created"> &middot; ###time###</span>
+      <span class="votes"><i class="icon icon-votes"></i>###votes###</span>
+    </div>
+    ###reply###
+    <div class="commit-words">
+    ###content###
+    </div>
+  </div>
+</div>

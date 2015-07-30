@@ -8,6 +8,7 @@
 
 #import "OSFQuestionDetail.h"
 #import "OSFCellCollection.h"
+#import <objc/message.h>
 @interface OSFQuestionDetail ()<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic, strong)UITableView *detailList;
@@ -24,7 +25,7 @@
     [self.view addSubview:self.detailList];
     
     [OSFCellCollection registerQuestionDetailCell:self.detailList];
-    
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
 }
 
 #pragma mark -- 视图
@@ -49,6 +50,14 @@
 {
     return 1;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.001;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.001;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell=[OSFCellCollection cellForQuestionDetail:tableView indexPath:indexPath title:@"IOS 中那些运动类的APP，如何实现在View中实时显示当前的速度和运动的距离的呢? 如何刷新界面" userName:@"赵锋" time:@"一天前" htmlString:@"<p>感觉写的都一样啊，很奇怪？<br><img src=\"/img/bVmRRs\" alt=\"图片描述\"></p><p><img src=\"/img/bVmRRv\" alt=\"图片描述\"><br><img src=\"/img/bVmRRx\" alt=\"图片描述\"></p>" tags:@[@"iOS",@"view",@"刷新",@"objective-c"]];
@@ -56,6 +65,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.view.bounds.size.height;
+    
+    return 550;
 }
 @end

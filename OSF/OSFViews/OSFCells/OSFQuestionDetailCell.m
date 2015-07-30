@@ -29,18 +29,16 @@
 
 -(void)updateConstraints
 {
-    NSLog(@"detail cell");
     
-//    [self.titleWithTime mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(5);
-//        make.width.mas_equalTo(self.contentView.bounds.size.width);
-//        make.left.mas_equalTo(0);
-//        make.height.mas_greaterThanOrEqualTo(40);
-//    }];
-    [self.webComment mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
+    [self.titleWithTime mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(5);
         make.width.mas_equalTo(self.contentView.bounds.size.width);
-        make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(5);
+        make.left.mas_equalTo(self);
+    }];
+    [self.webComment mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleWithTime.mas_bottom).offset(5);
+        make.width.mas_equalTo(self.contentView.bounds.size.width);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom).offset(-5);
     }];
     
     [super updateConstraints];
@@ -53,7 +51,7 @@
 {
     if (!_titleWithTime) {
         
-        OSFTitleNameWithTimeView *title_time=[[OSFTitleNameWithTimeView alloc] init];
+        OSFTitleNameWithTimeView *title_time=[[OSFTitleNameWithTimeView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 100)];
         
         _titleWithTime=title_time;
         [self.contentView addSubview:_titleWithTime];
@@ -63,7 +61,7 @@
 -(OSFWebViewWithComment*)webComment
 {
     if (!_webComment) {
-        OSFWebViewWithComment *web_commnet=[[OSFWebViewWithComment alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 1) hasTags:YES];
+        OSFWebViewWithComment *web_commnet=[[OSFWebViewWithComment alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 100) hasTags:YES];
         web_commnet.backgroundColor=[UIColor redColor];
         
         _webComment=web_commnet;

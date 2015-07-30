@@ -1,0 +1,9 @@
+<!-- 中间显示回答状态信息的那个条 -->
+<div class="answer-row">
+<h1 class="answer-label">###answer_count###</h1>
+<div class="btns-save">
+  <button class="button-xsmall pure-button pure-button-primary like_btn" id="btn-focus">关注</button>
+  <button class="button-xsmall pure-button pure-button-primary" id="btn-save">收藏</button>
+</div>
+</div>
+<hr>

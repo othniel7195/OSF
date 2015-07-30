@@ -1,0 +1,36 @@
+<div class="article-meta">
+    <h1>###title###</h1>
+    <p class="article-meta-info">
+        <img src="###avatar_url###" width="32" height="32" class="avatar" />
+        <a href="">###user###</a>
+        <strong>###rank###</strong>
+        &middot;
+        <span class="text-muted">###time###</span>
+    </p>
+</div>
+<div class="article-text fmt">
+###content###
+</div>
+<ul class="article-tags">
+  ###tags###
+  <!-- <li class="tag">php</li> -->
+</ul>
+
+<div class="article-author">
+    <p class="text-muted">本文发布于<a href="">###article_from###</a></p>
+    <blockquote>
+    ###quote_str###
+
+<!--         非商业转载请注明作译者、出处，并保留本文的原始链接： <a rel="nofollow" href="http://www.ituring.com.cn/article/195743" target="_blank">http://www.ituring.com.cn/article/195743</a>
+ -->    
+    </blockquote>
+</div>
+
+
+<footer>
+    <a id="like"  state="###state###"  data-articleid='###article_id###' class="blog-menu ###like_active###"><i class="icon like" /></i>赞</a>
+    <a id="save"    data-articleid='###article_id###' class="blog-menu ###save_active###"><i class="icon bookmark" /></i>###save###</a>
+    <a id="comment" data-articleid='###article_id###' class="blog-menu"><i class="icon comment" /></i> 评论</a>
+</footer>
+
+

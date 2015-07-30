@@ -1,0 +1,23 @@
+<div class="answer-cell" id="answer_###answer_id###">
+  <div class="header">
+    <a class="username">###user###</a>
+    <a class="rank">###rank###</a>
+    <a class="time">&middot; ###time###</a>
+  </div>
+  <div class="header">
+  ###content###
+  </div>
+  <div class="header">
+    <!-- <h2><i class="icon icon-accepted"></i>该答案已被采纳</h2> -->
+    ###accepted###
+  </div>
+  <div class="accepted-row" data-id="###answer_id###">
+
+    <button class="button-xsmall pure-button pure-button-default like_btn like_answer_btn ###like_btn_active###" answer-id="###answer_id###" state="###like_state###"><i class="icon icon-like"></i><span class="icon-text">有用</span></button>
+  <button class="button-xsmall pure-button pure-button-default like_btn hate_answer_btn ###unlike_btn_active###" answer-id="###answer_id###" state="###hate_state###"><i class="icon icon-unlike"></i></button>
+  <span class="like-num">###votes###</span>
+
+  <button class="button-xsmall pure-button pure-button-default like_btn btn-commit pull-right answer_comment" data-id="###answer_id###" id="answer_comment"><i class="icon icon-comment"></i><span class="icon-text">###comments###</span></button>
+
+  </div>
+</div>

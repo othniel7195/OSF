@@ -60,8 +60,11 @@
     
     NSString *htmlString = [NSString stringWithFormat:textFileContents, str];
     
-    NSLog(@"htmlString ;%@",htmlString);
-    return [self rexMake:htmlString];
+    NSString *realHtmlString=[self rexMake:htmlString];;
+    
+    NSLog(@"%@",realHtmlString);
+    
+    return realHtmlString;
 }
 
 // 从 16 进制的数值中抽取颜色

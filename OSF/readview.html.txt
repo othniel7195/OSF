@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>SegmentFault</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="default.min.css">
+        <link rel="stylesheet" href="pure-min.css">
+        <script src="highlight.min.js"></script>
+        <script src="jquery.js"></script>
+        <style type="text/css">
+        p, pre, code, div {word-break: break-all;}
+        </style>
+        <script type="text/javascript">
+        hljs.initHighlightingOnLoad();
+        </script>
+
+            <style type="text/css">
+    * {
+    margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #009A61;
+    }
+
+    .pure-button-primary {
+      background: #009A61;
+    }
+    .pure-button-default {
+      background: #fff;
+    }
+    .btn-menu {
+      padding: 8px 18px;
+      font-size: 13px;
+    }
+    .btn-menu.pure-button-default {
+      border: 1px solid #ccc;
+    }
+    .header {
+    margin-top: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 0px;
+    }
+    .tag_container {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 15px;
+    }
+    img {
+      width: 100%;
+    }
+    label {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    font-family: HelveticaNeue;
+    font-size: 12px;
+    color: #017E66;
+    background: #E7F2ED;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+    h1 {
+    font-size: 18px;
+    margin: 0px;
+    }
+    h2 {
+    font-family: STHeitiSC-Light;
+    font-size: 15px;
+    color: #009A61;
+    line-height: 29px;
+    }
+    .btns
+    {
+    display: block;
+    margin-top: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 20px;
+    }
+    .like_btn
+    {
+    /* Rectangle 17: */
+    background: #F3F3F3;
+    /* 有用: */
+    font-family: STHeitiSC-Light;
+    color: #999999;
+    padding: 6px 8px;
+    }
+    .like_btn.active {
+      background-color: #bbb;
+    }
+    .like_btn.active .icon-like {
+      background-image: url('./like_active.png');
+    }
+    .like_btn.active .icon-text {
+      color: #fff;
+    }
+    .like_btn.active .icon-unlike {
+      background-image: url('./unlike_active.png');
+    }
+    .save_btn
+    {
+    }
+    
+    #answer_label
+    {
+    display: inline;
+    }
+    #btn-focus
+    {
+    }
+    #btn-save
+    {
+    }
+    .answer-label {
+    line-height: 45px;
+    }
+    .btns-save {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    }
+    .answer-row {
+    height: 45px;
+    position: relative;
+    padding: 0 12px;
+    background-color: #f7f7f7;
+    border: 1px solid #C8C7CC;
+    border-left: none;
+    border-right: none;
+    }
+
+    .containner {
+    margin-bottom: 50px;
+    }
+
+    .accepted-row {
+    height: 29px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    }
+    #write-answer-btn {
+      line-height: 35px;
+      vertical-align: middle;
+      font-size: 16px;
+      padding-bottom: 0;
+      display: block;
+      width: 100%;
+      background: #009A61;
+      color: #fff;
+      border-radius: 4px;
+      text-align: center;
+    }
+    a#write-answer-submit-btn {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+    }
+    .write-answer-row {
+      padding: 5px 12px;
+      background: #F7F7F7;
+      position: fixed;
+      bottom: 0;
+      border-top: 1px solid #bbb;
+      left: 0;
+      right: 0;
+    }
+    .answer-cell {
+      border-bottom: 1px solid #ccc;
+      margin-left: 12px;
+    }
+
+    .answer-cell:last-child {
+      border-bottom: none;
+    }
+
+    .answer-cell .header {
+      margin-left: 0;
+    }
+
+    h3 {
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100%;
+    }
+    
+    .comment-row {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+
+      border-top: 1px solid gray;
+    }
+
+    .comment-write-row
+    {
+      height: 45px;
+      position: relative;
+      width: 100%;
+
+      border-bottom: 1px solid gray;
+      padding-bottom: 10px;
+    }
+
+    .btn-comment-write
+    {
+        position: absolute;
+        float: right;
+        right: 20px;
+        line-height: 20px;
+        margin-top: 12px;
+    }
+
+
+.comment-left-view {
+    width: 40px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.comment-right-view {
+    margin-left: 40px;
+}
+
+h1.rank {
+    line-height: 100%;
+}
+
+span.comment-user-info {
+    margin-left: 10px;
+    line-height: 40px;
+}
+
+.comment-top-view {
+    height: 40px;
+    font-size: 15px;
+    color: blue;
+}
+
+.rank {
+    text-align: center;
+    margin-top: 15px;
+}
+
+p.comment-text {
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;   
+    margin-bottom: 0px;
+}
+.icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.icon.icon-like {
+  background-image: url('./like.png');
+}
+.icon.icon-unlike {
+  background-image: url('./unlike.png');
+}
+.icon.icon-comment {
+  background-image: url('./comments.png');
+}
+.btn-commit.active {
+  background: #bbb;
+  color: #fff;
+}
+.btn-commit.active .icon.icon-comment {
+  background-image: url('./comments_active.png');
+}
+.icon.icon-accepted {
+  background-image: url('./accepted.png');
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  position: relative;
+  top: -2px;
+}
+.icon+.icon-text {
+  margin-left: 8px;
+}
+.like-num {
+  vertical-align: middle;
+  margin-left: 5px;
+  color: #666;
+}
+.pull-right {
+  float: right;
+}
+.username {
+  color: #009A61;
+}
+.time {
+  color: #999;
+  font-size: 15px;
+}
+.question-header {
+  background-color: #F3F3F3;
+  padding-bottom: 8px;
+  overflow-y: hidden;
+}
+.no-answers {
+  text-align: center;
+  color: #999;
+  padding: 60px 0;
+  line-height: 1.5;
+}
+.question-menus {
+  display: flex;
+  justify-content: space-between;
+  background: #f7f7f7;
+  border: 1px solid #C8C7CC;
+  border-left: none;
+  border-right: none;
+  overflow: hidden;
+}
+.question-menu {
+  width: 50%;
+  text-align: center;
+  line-height: 44px;
+  color: #888;
+  font-size: 14px;
+  float: left;
+}
+.question-menu .icon {
+  width: 13px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: text-bottom;
+}
+.question-menu.active {
+  color: #009A61;
+}
+.icon-bookmark {
+  background-image: url('bookmark.png');
+}
+.icon-view {
+  background-image: url('view.png');
+}
+.active .icon-bookmark {
+  background-image: url('bookmark_active.png');
+}
+.active .icon-view {
+  background-image: url('view_active.png');
+}
+    </style>
+
+    <style scoped>
+    .button-xsmall {
+    font-size: 70%;
+    }
+    </style>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+        $("#btn-focus").click(function (event) {
+            var question_id = $(this).data('id')
+            var href_url = "sfread://question/" + question_id + "/?action=follow&state=" + $(this).attr("state")
+            console.log("href_url: ", href_url)
+            location.href = href_url;
+            event.stopImmediatePropagation()
+        })
+
+        $("#question_comment").click(function (event) {
+            var question_id = $(this).data('id')
+            var href_url = "sfread://question/" + question_id + "/?action=comment"
+            console.log("href_url: ", href_url)
+            location.href = href_url;
+            event.stopImmediatePropagation()
+        })
+
+        $(".answer_comment").click(function (event) {
+            var answer_id = $(this).data('id')
+            var href_url = "sfread://answer/" + answer_id + "/?action=comment"
+            console.log("href_url: ", href_url)
+            location.href = href_url;
+            event.stopImmediatePropagation()
+        })
+
+
+        $("#btn-save").click(function (event) {
+            var question_id = $(this).data('id')
+            var href_url = "sfread://question/" + question_id + "/?action=save&state=" + $(this).attr("state")
+            console.log("href_url: ", href_url)
+            location.href = href_url;
+            event.stopImmediatePropagation()
+        })
+
+        $(".like_answer_btn").click(function(event){
+        var answer_id = $(this).attr("answer-id")
+        var href_url = "sfread://answer/" + answer_id + "/?action=like&state=" + $(this).attr("state")
+        console.log("href_url: ", href_url)
+        location.href = href_url;
+        event.stopImmediatePropagation()
+        })
+
+        $(".hate_answer_btn").click(function(event){
+        var answer_id = $(this).attr("answer-id")
+        var href_url = "sfread://answer/" + answer_id + "/?action=hate&state=" + $(this).attr("state")
+        location.href = href_url;
+        console.log("href_url: ", href_url)
+        event.stopImmediatePropagation()
+        })
+
+        $(".like_question_btn").click(function(event){
+        var answer_id = $(this).attr("question-id")
+        var href_url = "sfread://question/" + answer_id + "/?action=like&state=" + $(this).attr("state")
+        console.log("href_url: ", href_url)
+        location.href = href_url;
+        event.stopImmediatePropagation()
+        })
+
+        $(".hate_question_btn").click(function(event){
+        var answer_id = $(this).attr("question-id")
+        var href_url = "sfread://question/" + answer_id + "/?action=hate&state=" + $(this).attr("state")
+        location.href = href_url;
+        console.log("href_url: ", href_url)
+        event.stopImmediatePropagation()
+        })
+
+        $('#write-answer-btn').click(function (event) {
+          var question_id = $(this).attr("question-id")
+          location.href = 'sfread://writeanswer/'+ question_id + "/"
+          event.stopImmediatePropagation()
+        });
+
+        $('img').click(function (event) {
+          location.href = 'image://' + $(this).attr('src');
+        });
+
+        $('a').click(function (event) {
+          event.preventDefault();
+          location.href = 'url://' + $(this).attr('href');
+        });
+
+      });
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function jump_to_answer (answer_id) {
+          var answer = "#answer_" + answer_id
+          var offset = $(answer).offset()
+          var top = offset.top
+          console.log("answer offset:" + offset)
+          window.scrollTo(0, top)
+        }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        String.format = function(src){
+            if (arguments.length == 0) return null;
+            var args = Array.prototype.slice.call(arguments, 1);
+            return src.replace(/\{(\d+)\}/g, function(m, i){
+                return args[i];
+            });
+        };
+
+        </script>
+
+    </head>
+    <body>
+        <div class="containner">
+        ###content###
+        
+        <div class="write-answer-row">
+              <div id="write-answer-btn" question-id="###questionId###">撰写新答案</div>
+        </div>
+        </div>
+
+        <!-- 撰写答案 -->
+
+    </body>
+</html>

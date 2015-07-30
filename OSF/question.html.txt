@@ -1,0 +1,43 @@
+<div class="question-row" question-id="###question_id###">
+	<div class="question-header">
+		<div class="header">
+			<h1>
+				###title###
+			</h1>
+		</div>
+		<div class="header">
+			<a class="username">###user###</a> <a class="rank">###rank###</a> <a class="time">· ###time###</a>
+		</div>
+	</div>
+	<div class="header">
+		###content###
+	</div>
+	<div class="tag_container">
+		###tags###
+	</div>
+	<div class="btns" data-id="###question_id###">
+	        <button state="###like_state###" 
+	        		class="button-xsmall pure-button pure-button-default like_btn like_question_btn ###like_btn_active###" 
+	        		question-id="###question_id###">
+	        		<i class="icon icon-like"></i><span class="icon-text">有用</span></button>
+	        <button state="###hate_state###" 
+	                class="button-xsmall pure-button pure-button-default like_btn hate_question_btn ###unlike_btn_active###" 
+	                question-id="###question_id###">
+	                <i class="icon icon-unlike"></i></button>
+          <span class="like-num">###votes###</span>
+          <button class="button-xsmall pure-button pure-button-default like_btn btn-commit pull-right" 
+                  data-id="###question_id###" id="question_comment">
+                  <i class="icon icon-comment"></i><span class="icon-text">###comments###</span></button>
+	</div>
+	
+	<div class="question-menus">
+		<div class="question-menu ###follow_active###" 
+		   data-id="###question_id###"
+		     state="###follow_state###" 
+		     id="btn-focus"><i class="icon icon-view"    ></i>###follow###</div>
+		<div class="question-menu ###save_active###"   
+		   data-id="###question_id###"
+		     state="###save_state###" 
+		     id="btn-save"><i class="icon icon-bookmark"></i>###save###</div>
+	</div>
+</div>

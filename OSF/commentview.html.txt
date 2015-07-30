@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>SegmentFault</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="pure-min.css">
+    <script src="jquery.js"></script>
+    <style type="text/css">
+    * {
+    margin: 0;
+    }
+    .header {
+    margin-top: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 0px;
+    }
+    .tag_container {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 15px;
+    }
+    label {
+    margin-top: 3px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    font-family: HelveticaNeue;
+    font-size: 18px;
+    color: #017E66;
+    background: #E7F2ED;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+    h1 {
+    font-size: 18px;
+    margin: 0px;
+    }
+    h2 {
+    font-family: STHeitiSC-Light;
+    font-size: 15px;
+    color: #009A61;
+    line-height: 29px;
+    }
+    .btns
+    {
+    display: block;
+    margin-top: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 20px;
+    }
+    .like_btn
+    {
+    /* Rectangle 17: */
+    background: #F3F3F3;
+    border-radius: 4px;
+    /* 有用: */
+    font-family: STHeitiSC-Light;
+    color: #999999;
+    }
+    .save_btn
+    {
+    }
+
+    img {
+      width: 100%;
+    }
+
+
+    #answer_label
+    {
+    display: inline;
+    }
+    #btn-focus
+    {
+    }
+    #btn-save
+    {
+    }
+    .answer-label {
+    line-height: 45px;
+    }
+    .btns-save {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    }
+    .answer-row {
+    height: 45px;
+    position: relative;
+    margin-left: 12px;
+    margin-right: 12px;
+    }
+
+    .containner {
+    margin-bottom: 43px;
+    }
+
+    .accepted-row {
+    height: 29px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+    button#write-answer-btn {
+    width: 80%;
+    margin-left: 10px;
+    line-height: 30px;
+    background: none;
+    border: 1px solid #ccc;
+    background: #fff;
+    text-align: left;
+    color: #989CA3;
+    vertical-align: middle;
+    font-size: 15px;
+    padding-bottom: 0;
+    }
+    a#write-answer-submit-btn {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+    }
+    .write-answer-row {
+    padding: 5px;
+    background: #F7F7F7;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #bbb;
+    }
+    .answer-cell
+    {
+
+    }
+
+    h3 {
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100%;
+    }
+
+    .comment-row {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+
+      border-top: 1px solid gray;
+    }
+
+    .comment-write-row
+    {
+      height: 45px;
+      position: relative;
+      width: 100%;
+
+      border-bottom: 1px solid gray;
+      padding-bottom: 10px;
+    }
+
+    .btn-comment-write
+    {
+        position: absolute;
+        float: right;
+        right: 20px;
+        line-height: 20px;
+        margin-top: 12px;
+    }
+
+
+.comment-left-view {
+    width: 40px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.comment-right-view {
+    margin-left: 40px;
+}
+
+h1.rank {
+    line-height: 100%;
+}
+
+span.comment-user-info {
+    margin-left: 10px;
+    line-height: 40px;
+}
+
+.comment-top-view {
+    height: 40px;
+    font-size: 15px;
+    color: blue;
+}
+
+.rank {
+    text-align: center;
+    margin-top: 15px;
+}
+
+p.comment-text {
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.commit-avatar {
+  width: 15%;
+  float: left;
+}
+.commit-avatar img {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border-radius: 50%;
+}
+.commit-item {
+  overflow: hidden;
+  border-bottom: 1px solid #C8C7CC;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.commit-content {
+  float: left;
+  width: 85%;
+}
+.commit-header {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.commit-header .index {
+  color: #666;
+}
+.commit-header .username {
+  font-weight: bold;
+  color: #009A61;
+}
+.commit-header .created {
+  color: #999;
+}
+.commit-header .votes {
+  color: #009A61;
+  float: right;
+  font-size: 14px;
+}
+.commit-words {
+  color: #333;
+  font-size: 15px;
+}
+.icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 5px;
+}
+.icon.icon-votes {
+  background-image: url(./votes.png);
+}
+
+.commit-end {
+  margin: 20px 0 60px;
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+}
+    </style>
+    <style scoped>
+    .button-xsmall {
+    font-size: 70%;
+    }
+    </style>
+
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('a').click(function (event) {
+    event.stopImmediatePropagation()
+
+    var href = $(this).attr('href');
+    if(href)
+    {
+      location.href = 'url://' + $(this).attr('href');
+      event.preventDefault();    
+    }
+  });
+
+
+  $('.commit-item').click(function(event) {
+    event.stopImmediatePropagation()
+    var comment_id = $(this).data('id')
+    var username   = $(this).data('user')
+    var userid     = $(this).data('userid')
+    var href_url   = "sfread://action/" + comment_id + "/?username=" + username + "&userid=" + userid
+    location.href  = href_url;
+  });
+
+  $('.write-answer-row').click(function(event) {
+    event.stopImmediatePropagation()
+    var model_id = $(this).attr("model-id")
+    var href_url = "sfread://writeanswer/" + model_id
+    location.href = href_url;
+  });
+
+});
+</script>
+<body>
+    <!-- 问题 -->
+    <div class="containner">
+
+        ###content###
+
+        <div class="commit-end">
+          # EOF #
+        </div>
+
+    </div>
+
+    <!-- 撰写答案 -->
+    <div class="write-answer-row" model-id="###model-id###">
+      <button id="write-answer-btn">撰写评论</button>
+      <a id="write-answer-submit-btn">提交</a>
+    </div>
+</div>
+</body>
+</html>

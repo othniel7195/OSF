@@ -27,12 +27,22 @@
         
         [self addSubview:self.questionTitleLabel];
         [self addSubview:self.nameWithTimeLabel];
+        
+        [self initConstraints];
     }
     return self;
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.questionTitleLabel.preferredMaxLayoutWidth=CGRectGetWidth(self.questionTitleLabel.frame);
+}
+
 -(void)initConstraints
 {
+    MASAttachKeys(self.questionTitleLabel,self.nameWithTimeLabel);
     [self.questionTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.top.mas_equalTo(self).offset(10);
         make.right.mas_equalTo(self).offset(-10);
@@ -40,7 +50,7 @@
     }];
     [self.nameWithTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self).offset(10);
-        make.top.mas_equalTo(self.questionTitleLabel).offset(10);
+        make.top.mas_equalTo(self.questionTitleLabel.mas_bottom).offset(10);
         make.right.mas_equalTo(self).offset(-10);
         make.bottom.mas_equalTo(self).offset(-10);
     }];
@@ -49,7 +59,7 @@
 -(UILabel *)questionTitleLabel
 {
     if (_questionTitleLabel==nil) {
-        UILabel *qtl=[[UILabel alloc] init];
+        UILabel *qtl=[[UILabel alloc] initWithFrame:CGRectZero];
         qtl.backgroundColor=[UIColor clearColor];
         qtl.font=[UIFont boldSystemFontOfSize:16.0];
         qtl.textColor=[UIColor blackColor];
